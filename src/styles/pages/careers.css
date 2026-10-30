@@ -1516,3 +1516,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-
 }
 
 
+
+/* Frontend-only navigation and application presentation. */
+.nav-drawer.is-open { opacity: 1; pointer-events: auto; transform: none; }
+.nav.collapsed:hover .nav-flyout, .nav.collapsed:focus-within .nav-flyout { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+.footer-wordmark { background-image: var(--g); background-clip: text; -webkit-text-fill-color: transparent; font-family: var(--display); }
+.wizard-visible > .wiz-step { display: block; }
+.seg button.on { background: var(--ink); color: var(--paper); }
+#ratings { display: grid; gap: 20px; }
+.rating { display: flex; gap: 8px; }
+.wiz-nav { flex-wrap: wrap; }
+.wiz-panel .mbtn.grad { background: var(--g); }
