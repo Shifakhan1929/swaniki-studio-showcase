@@ -1,54 +1,53 @@
 import type { CSSProperties } from "react";
 import { useEffect } from "react";
-import { Fragment } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/site.css?raw";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [{ title: "Swaniki | Digital Product Studio for SaaS, Web \u0026 Automation" }] }),
+  head: () => ({ meta: [
+    { title: "Swaniki | Digital Product Studio for SaaS, Web & Automation" },
+    { name: "description", content: "Swaniki builds SaaS products, creative websites, custom automations and AI-powered solutions." },
+    { property: "og:title", content: "Swaniki | Digital Product Studio" },
+    { property: "og:description", content: "Explore Swaniki Labs products, client websites and our in-house approach to digital solutions." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   staticData: { importedDocument: { html: { "lang": "en", "style": { scrollBehavior: "smooth" } }, body: { "className": "gsap-on", "id": "top" } } },
   component: Index,
 });
 
 function Index() {
   const [activeSlide0, setActiveSlide0] = useState(0);
-  useImportedLayout();
-  const carouselContent0 = (<>
-{activeSlide0 === 0 && <Fragment key={0}>
-<button className="stack-nav-btn" onClick={event => { event.preventDefault(); event.stopPropagation(); setActiveSlide0(index => (index + -1 + 3) % 3); }} type="button" aria-label="Previous capability card">
-  <span>Prev</span>
-  <span aria-hidden="true">←</span>
-</button>
-<span className="stack-counter" aria-live="polite">04 / 04</span>
-<button className="stack-nav-btn" onClick={event => { event.preventDefault(); event.stopPropagation(); setActiveSlide0(index => (index + 1 + 3) % 3); }} type="button" aria-label="Next capability card" disabled>
-  <span>Next</span>
-  <span aria-hidden="true">→</span>
-</button>
-</Fragment>}
-{activeSlide0 === 1 && <Fragment key={1}>
-<button className="stack-nav-btn" onClick={event => { event.preventDefault(); event.stopPropagation(); setActiveSlide0(index => (index + -1 + 3) % 3); }} type="button" aria-label="Previous capability card">
-  <span>Prev</span>
-  <span aria-hidden="true">←</span>
-</button>
-<span className="stack-counter" aria-live="polite">02 / 04</span>
-<button className="stack-nav-btn" onClick={event => { event.preventDefault(); event.stopPropagation(); setActiveSlide0(index => (index + 1 + 3) % 3); }} type="button" aria-label="Next capability card">
-  <span>Next</span>
-  <span aria-hidden="true">→</span>
-</button>
-</Fragment>}
-{activeSlide0 === 2 && <Fragment key={2}>
-<button className="stack-nav-btn" onClick={event => { event.preventDefault(); event.stopPropagation(); setActiveSlide0(index => (index + -1 + 3) % 3); }} type="button" aria-label="Previous capability card">
-  <span>Prev</span>
-  <span aria-hidden="true">←</span>
-</button>
-<span className="stack-counter" aria-live="polite">04 / 04</span>
-<button className="stack-nav-btn" onClick={event => { event.preventDefault(); event.stopPropagation(); setActiveSlide0(index => (index + 1 + 3) % 3); }} type="button" aria-label="Next capability card" disabled>
-  <span>Next</span>
-  <span aria-hidden="true">→</span>
-</button>
-</Fragment>}
-</>);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [flyoutOpen, setFlyoutOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const { collapsed, bandProgress } = useImportedLayout();
+  useEffect(() => {
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setFlyoutOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
+  const moveCapability = (direction: number) => {
+    const rail = document.querySelector<HTMLElement>(".stack-wrap");
+    const card = rail?.querySelector<HTMLElement>(".sp");
+    if (!rail || !card) return;
+    const next = Math.max(0, Math.min(3, activeSlide0 + direction));
+    setActiveSlide0(next);
+    rail.scrollTo({ left: next * (card.offsetWidth + 24), behavior: "smooth" });
+  };
+  const carouselContent0 = <>
+    <button className="stack-nav-btn" type="button" aria-label="Previous capability card" disabled={activeSlide0 === 0} onClick={() => moveCapability(-1)}><span>Prev</span><span aria-hidden="true">←</span></button>
+    <span className="stack-counter" aria-live="polite">0{activeSlide0 + 1} / 04</span>
+    <button className="stack-nav-btn" type="button" aria-label="Next capability card" disabled={activeSlide0 === 3} onClick={() => moveCapability(1)}><span>Next</span><span aria-hidden="true">→</span></button>
+  </>;
   return (
     <>
       <style>{capturedCSS}</style>
@@ -58,24 +57,24 @@ function Index() {
       <div className="inset-0 pointer-events-none fixed z-0 [background-image:linear-gradient(rgba(11,14,23,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(11,14,23,.04)_1px,transparent_1px)] [background-size:66px_66px] [mask:radial-gradient(circle_at_50%_16%,#000,transparent_80%)]" />
       <div className={"\x63ursor-glow [background:radial-gradient(circle,rgba(124,107,240,.14),rgba(42,143,227,.07)_42%,transparent_66%)] h-[600px] left-0 pointer-events-none fixed top-0 w-[600px] will-change-transform z-0"} id="cursorGlow" aria-hidden="true" />
       <div className="grain mix-blend-multiply" />
-      <nav className="nav" id="nav" data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"collapsed\"],\"removed\":[],\"threshold\":648},\"mobile\":{\"added\":[\"collapsed\"],\"removed\":[],\"threshold\":633}}"}>
-        <a className="nav-home" style={{ textDecoration: "none" }} aria-label="Swaniki Home" href="#top">
+      <nav className={`nav${collapsed ? " collapsed" : ""}${menuOpen ? " menu-open" : ""}${flyoutOpen ? " flyout-open" : ""}`} onMouseEnter={() => collapsed && setFlyoutOpen(true)} onMouseLeave={() => setFlyoutOpen(false)} id="nav" data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"collapsed\"],\"removed\":[],\"threshold\":648},\"mobile\":{\"added\":[\"collapsed\"],\"removed\":[],\"threshold\":633}}"}>
+        <a className="nav-home" style={{ textDecoration: "none" }} aria-label="Swaniki Home" onFocus={() => collapsed && setFlyoutOpen(true)} href="#top">
           <span className="brand">
             <img className="brand-mark" src="/site-assets/acbe9434c0d28eff.png" alt="Swaniki Mark" width="30" height="30" />
             <img className="brand-text" src="/site-assets/4042d99102476dbf.png" alt="Swaniki" width="85" height="19" />
           </span>
         </a>
-        <div className="nav-links"><a aria-label="Swaniki Labs — all products" href="/labshtml-ffe9d364ec6cac35" title="Swaniki Labs — all our products"><span className="brand">Swaniki <span className="qual">Labs</span></span></a><a aria-label="Swaniki Technologies — all client websites" href="/technologieshtml-1df41b6d05675be9" title="Swaniki Technologies — all our client websites"><span className="brand">Swaniki <span className="qual">Technologies</span></span></a><a href="/abouthtml-db5b16407156eab2#about">About</a><a href="/careershtml-263d6d2aa1009c5e">Careers</a></div>
-        <a className="nav-cta" data-magnetic="" href="/contacthtml-030e61461fb49a1a">Start a project</a>
+        <div className="nav-links"><a aria-label="Swaniki Labs — all products" href="/labs.html" title="Swaniki Labs — all our products"><span className="brand">Swaniki <span className="qual">Labs</span></span></a><a aria-label="Swaniki Technologies — all client websites" href="/technologies.html" title="Swaniki Technologies — all our client websites"><span className="brand">Swaniki <span className="qual">Technologies</span></span></a><a href="/about.html#about">About</a><a href="/careers.html">Careers</a></div>
+        <a className="nav-cta" data-magnetic="" href="/contact.html">Start a project</a>
         <div className="nav-flyout" id="navFlyout" role="region" aria-label="Quick navigation">
           <a className="nav-flyout-link" href="#top">Home</a>
-          <a className="nav-flyout-link" href="/labshtml-ffe9d364ec6cac35">Products</a>
-          <a className="nav-flyout-link" href="/indexhtml-213456c5dc963e03#stack">What we build</a>
-          <a className="nav-flyout-link" href="/technologieshtml-1df41b6d05675be9">Websites &amp; Technologies</a>
-          <a className="nav-flyout-link" href="/abouthtml-db5b16407156eab2#services">About &amp; Capabilities</a>
-          <a className="nav-flyout-link nav-flyout-cta" href="/contacthtml-030e61461fb49a1a">Start a Project</a>
+          <a className="nav-flyout-link" href="/labs.html">Products</a>
+          <a className="nav-flyout-link" href="/#stack">What we build</a>
+          <a className="nav-flyout-link" href="/technologies.html">Websites &amp; Technologies</a>
+          <a className="nav-flyout-link" href="/about.html#services">About &amp; Capabilities</a>
+          <a className="nav-flyout-link nav-flyout-cta" href="/contact.html">Start a Project</a>
         </div>
-        <button className="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <button ref={toggleRef} className="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="navDrawer" aria-expanded={menuOpen} onClick={() => setMenuOpen(open => !open)}>
           <span />
           <span />
           <span />
@@ -86,29 +85,29 @@ function Index() {
         <div className="proof reveal flex-wrap gap-0 isolate justify-center overflow-hidden relative [rotate:none] [scale:none]" style={{ translate: "none", opacity: "0.9906", transform: "translate(0px, 0px)" } as CSSProperties}>
           <div className="ambient-glow [background:radial-gradient(circle,rgba(99,102,241,.15)_0%,rgba(168,85,247,.08)_45%,transparent_70%)] h-[600px] left-1/2 pointer-events-none absolute top-1/2 w-[600px] z-0" aria-hidden="true" />
           <div className="relative text-center z-1">
-            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--g) bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">15+</b>
+            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">15+</b>
             <span className="text-(--ink-soft) text-[13px] font-medium">Products</span>
           </div>
           <div className="relative text-center z-1">
-            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--g) bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">20+</b>
+            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">20+</b>
             <span className="text-(--ink-soft) text-[13px] font-medium">Websites</span>
           </div>
           <div className="relative text-center z-1">
-            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--g) bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">3</b>
+            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">3</b>
             <span className="text-(--ink-soft) text-[13px] font-medium">Core capabilities</span>
           </div>
           <div className="relative text-center z-1">
-            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--g) bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">100%</b>
+            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">100%</b>
             <span className="text-(--ink-soft) text-[13px] font-medium">In-house build</span>
           </div>
         </div>
-        <div className="dir-paths reveal max-w-[1100px] [rotate:none] [scale:none]" style={{ translate: "none", opacity: "0.9906", transform: "translate(0px, 0px)" } as CSSProperties}><a className="path-chip path-products items-center gap-[14px] isolate overflow-hidden" href="#labs"><span className="path-icon d-labs text-[#2563eb] h-[34px] place-items-center w-[34px]"><svg className="fill-none h-[18px] stroke-current w-[18px] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.7]" viewBox="0 0 24 24" aria-hidden="true" {...({ focusable: "false" } as any)}><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" /><path d="m12 12 8-4.5M12 12v9M12 12 4 7.5M8 5.3l8 4.5" /></svg></span><div className="path-txt flex-col gap-[2px]"><span className="text-(--ink) text-[14px] font-bold tracking-[-.01em]">Products</span><span className="path-desc text-[12.5px] font-medium">Explore Swaniki Labs <span className="path-arrow">→</span></span></div></a><a className="path-chip path-websites items-center gap-[14px] isolate overflow-hidden" href="#tech"><span className="path-icon d-tech text-[#7c3aed] h-[34px] place-items-center w-[34px]"><svg className="fill-none h-[18px] stroke-current w-[18px] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.7]" viewBox="0 0 24 24" aria-hidden="true" {...({ focusable: "false" } as any)}><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" /></svg></span><div className="path-txt flex-col gap-[2px]"><span className="text-(--ink) text-[14px] font-bold tracking-[-.01em]">Websites</span><span className="path-desc text-[12.5px] font-medium">Explore Swaniki Technologies <span className="path-arrow">→</span></span></div></a><a className="path-chip path-solutions items-center gap-[14px] isolate overflow-hidden" href="/contacthtml-030e61461fb49a1a"><span className="path-icon d-sol text-[#059669] h-[34px] place-items-center w-[34px]"><svg className="fill-none h-[18px] stroke-current w-[18px] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.7]" viewBox="0 0 24 24" aria-hidden="true" {...({ focusable: "false" } as any)}><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z" /><path d="m19 14 1 2.5 2 1-2 1L19 21l-1-2.5-2-1 2-1L19 14Z" /></svg></span><div className="path-txt flex-col gap-[2px]"><span className="text-(--ink) text-[14px] font-bold tracking-[-.01em]">Custom Solutions</span><span className="path-desc text-[12.5px] font-medium">Start a project <span className="path-arrow">→</span></span></div></a></div>
+        <div className="dir-paths reveal max-w-[1100px] [rotate:none] [scale:none]" style={{ translate: "none", opacity: "0.9906", transform: "translate(0px, 0px)" } as CSSProperties}><a className="path-chip path-products items-center gap-[14px] isolate overflow-hidden" href="#labs"><span className="path-icon d-labs text-[#2563eb] h-[34px] place-items-center w-[34px]"><svg className="fill-none h-[18px] stroke-current w-[18px] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.7]" viewBox="0 0 24 24" aria-hidden="true" {...({ focusable: "false" } as any)}><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" /><path d="m12 12 8-4.5M12 12v9M12 12 4 7.5M8 5.3l8 4.5" /></svg></span><div className="path-txt flex-col gap-[2px]"><span className="text-(--ink) text-[14px] font-bold tracking-[-.01em]">Products</span><span className="path-desc text-[12.5px] font-medium">Explore Swaniki Labs <span className="path-arrow">→</span></span></div></a><a className="path-chip path-websites items-center gap-[14px] isolate overflow-hidden" href="#tech"><span className="path-icon d-tech text-[#7c3aed] h-[34px] place-items-center w-[34px]"><svg className="fill-none h-[18px] stroke-current w-[18px] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.7]" viewBox="0 0 24 24" aria-hidden="true" {...({ focusable: "false" } as any)}><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" /></svg></span><div className="path-txt flex-col gap-[2px]"><span className="text-(--ink) text-[14px] font-bold tracking-[-.01em]">Websites</span><span className="path-desc text-[12.5px] font-medium">Explore Swaniki Technologies <span className="path-arrow">→</span></span></div></a><a className="path-chip path-solutions items-center gap-[14px] isolate overflow-hidden" href="/contact.html"><span className="path-icon d-sol text-[#059669] h-[34px] place-items-center w-[34px]"><svg className="fill-none h-[18px] stroke-current w-[18px] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.7]" viewBox="0 0 24 24" aria-hidden="true" {...({ focusable: "false" } as any)}><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z" /><path d="m19 14 1 2.5 2 1-2 1L19 21l-1-2.5-2-1 2-1L19 14Z" /></svg></span><div className="path-txt flex-col gap-[2px]"><span className="text-(--ink) text-[14px] font-bold tracking-[-.01em]">Custom Solutions</span><span className="path-desc text-[12.5px] font-medium">Start a project <span className="path-arrow">→</span></span></div></a></div>
       </div>
       <ImportedSection />
       <ImportedSectionSwanikiLabs />
       <ImportedSectionSwanikiTechnologies />
       <div className="band-wrap relative z-1" id="band">
-        <div className="band-inner h-screen overflow-hidden sticky top-0 [@media(min-width:861px)]:[will-change:clip-path]" style={{ "--cp": "1.0000" } as CSSProperties}>
+        <div className="band-inner h-screen overflow-hidden sticky top-0 [@media(min-width:861px)]:[will-change:clip-path]" style={{ "--cp": bandProgress } as CSSProperties}>
           <div className="band-img inset-[-9%] absolute [@media(min-width:861px)]:will-change-transform" style={{ backgroundImage: "url(\"/site-assets/fcbfe8ff3d3fadb7.avif\")" }} />
           <div className="[background:linear-gradient(120deg,rgba(15,181,163,.30),rgba(91,83,230,.5))] inset-0 mix-blend-multiply absolute" />
           <div className="[background:linear-gradient(0deg,rgba(6,8,16,.55),transparent_55%)] inset-0 absolute" />
@@ -129,7 +128,7 @@ function Index() {
           </div>
           <div className="stack-controls" aria-label="Capability card navigation" data-site-import-carousel-root="0">{carouselContent0}</div>
         </div>
-        <div className="stack-wrap flex-row gap-[24px] max-w-[1100px] overflow-x-auto w-full [-webkit-overflow-scrolling:touch] [scroll-snap-type:x_mandatory] [scrollbar-width:none]">
+        <div onScroll={event => { const rail = event.currentTarget; const card = rail.querySelector<HTMLElement>(".sp"); if (card) setActiveSlide0(Math.min(3, Math.round(rail.scrollLeft / (card.offsetWidth + 24)))); }} className="stack-wrap flex-row gap-[24px] max-w-[1100px] overflow-x-auto w-full [-webkit-overflow-scrolling:touch] [scroll-snap-type:x_mandatory] [scrollbar-width:none]">
           <article className="sp bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white min-h-[520px] overflow-hidden relative z-auto [@media(max-width:820px)]:min-h-[520px]">
             <div className="sp-inner bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white text-site-import-primary h-full overflow-hidden relative [@media(max-width:820px)]:h-full [@media(max-width:820px)]:min-h-[520px]">
               <div className="sp-media h-[44%] top-0 right-0 bottom-auto left-0 absolute z-0" style={{ backgroundImage: "url(\"/site-assets/973b96bb3e52fe92.webp\")" }} />
@@ -143,7 +142,7 @@ function Index() {
                   <span className="text-[#334155] font-semibold">Full-stack build</span>
                   <span className="text-[#334155] font-semibold">Scaling &amp; ops</span>
                 </div>
-                <a className="sp-action-btn items-center gap-[8px]" href="/labshtml-ffe9d364ec6cac35">Explore Swaniki Labs →</a>
+                <a className="sp-action-btn items-center gap-[8px]" href="/labs.html">Explore Swaniki Labs →</a>
               </div>
             </div>
           </article>
@@ -161,7 +160,7 @@ function Index() {
                   <span className="text-[#334155] font-semibold">Performance</span>
                   <span className="text-[#334155] font-semibold">SEO &amp; CMS</span>
                 </div>
-                <a className="sp-action-btn items-center gap-[8px]" href="/technologieshtml-1df41b6d05675be9">Explore Swaniki Technologies →</a>
+                <a className="sp-action-btn items-center gap-[8px]" href="/technologies.html">Explore Swaniki Technologies →</a>
               </div>
             </div>
           </article>
@@ -178,7 +177,7 @@ function Index() {
                   <span className="text-[#334155] font-semibold">Threads &amp; Meta</span>
                   <span className="text-[#334155] font-semibold">GMB Growth</span>
                 </div>
-                <a className="sp-action-btn items-center gap-[8px]" href="/abouthtml-db5b16407156eab2#services">Learn more →</a>
+                <a className="sp-action-btn items-center gap-[8px]" href="/about.html#services">Learn more →</a>
               </div>
             </div>
           </article>
@@ -190,12 +189,12 @@ function Index() {
           <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.7 111L0 480l117.7-30.9c32.4 17.7 68.3 27 105.5 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 5.6-3.7 8.4-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.1-3.2-5.5.8-8.5 2.5-11.2 2.5-3.6 5.6-6.9 8.4-10.4 2.8-3.5 3.7-6 5.6-9.3 1.9-3.2 1-6.1-.4-8.6-1.4-2.4-12.5-30-17.1-41.1-4.5-10.9-9.1-9.4-12.5-9.6-3.4-.2-7.3-.2-11.2-.2-3.9 0-10.2 1.4-15.5 7-5.3 5.6-20.3 19.8-20.3 48.3 0 28.5 20.8 56 23.8 59.9 3 3.9 41 62.7 99.2 88 13.9 6 24.7 9.6 33.1 12.3 13.9 4.4 26.5 3.8 36.5 2.3 11.1-1.7 34.3-14 39.2-27.5 4.9-13.5 4.9-25 3.4-27.5-1.4-2.5-5.2-3.9-10.7-6.7z" />
         </svg>
       </a>
-      <div className="nav-drawer bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#fffffff2] flex-col gap-[8px] left-[16px] pointer-events-none fixed right-[16px] top-[72px] z-49 [backdrop-filter:blur(24px)]" id="navDrawer">
-        <a className="items-center justify-between" href="/labshtml-ffe9d364ec6cac35"><span>Swaniki Labs</span>{" "}<span>→</span></a>
-        <a className="items-center justify-between" href="/technologieshtml-1df41b6d05675be9"><span>Swaniki Technologies</span>{" "}<span>→</span></a>
-        <a className="items-center justify-between" href="/abouthtml-db5b16407156eab2#about"><span>About</span>{" "}<span>→</span></a>
-        <a className="items-center justify-between" href="/careershtml-263d6d2aa1009c5e"><span>Careers</span>{" "}<span>→</span></a>
-        <a className="nav-drawer-cta items-center justify-center" href="/contacthtml-030e61461fb49a1a">Start a project</a>
+      <div className={`nav-drawer${menuOpen ? " is-open" : ""} bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#fffffff2] flex-col gap-[8px] left-[16px] pointer-events-none fixed right-[16px] top-[72px] z-49 [backdrop-filter:blur(24px)]`} id="navDrawer" aria-hidden={!menuOpen} inert={!menuOpen}>
+        <a className="items-center justify-between" href="/labs.html"><span>Swaniki Labs</span>{" "}<span>→</span></a>
+        <a className="items-center justify-between" href="/technologies.html"><span>Swaniki Technologies</span>{" "}<span>→</span></a>
+        <a className="items-center justify-between" href="/about.html#about"><span>About</span>{" "}<span>→</span></a>
+        <a className="items-center justify-between" href="/careers.html"><span>Careers</span>{" "}<span>→</span></a>
+        <a className="nav-drawer-cta items-center justify-center" href="/contact.html">Start a project</a>
       </div>
 
     </>
@@ -206,7 +205,7 @@ function ImportedHeaderGotAProblemLet() {
   return (
     <header className="hero hr-go overflow-hidden text-center">
       <div className="ambient-glow [background:radial-gradient(circle,rgba(99,102,241,.15)_0%,rgba(168,85,247,.08)_45%,transparent_70%)] h-[600px] left-1/2 pointer-events-none absolute top-[22%] w-[600px] z-0" aria-hidden="true" />
-      <div className="hero-stage inset-0 overflow-hidden pointer-events-none absolute z-0" aria-hidden="true"><div className="hero-aurora h-[125%] left-1/2 absolute top-[-14%] w-[150%] [background:radial-gradient(40%_52%_at_16%_40%,rgba(15,181,163,.17),transparent_70%),radial-gradient(38%_52%_at_84%_30%,rgba(124,107,240,.19),transparent_70%),radial-gradient(44%_58%_at_50%_4%,rgba(42,143,227,.15),transparent_72%)]" /><div className="hero-beam [background:conic-gradient(from_10deg,transparent_0_42deg,rgba(124,107,240,.12)_56deg,transparent_72deg,transparent_186deg,rgba(15,181,163,.10)_202deg,transparent_218deg)] h-[980px] left-1/2 absolute top-[34%] w-[980px] will-change-transform" /><div className="hero-spot [background:radial-gradient(52%_52%_at_50%_50%,rgba(255,255,255,.85),rgba(255,255,255,0)_72%)] left-1/2 absolute w-[min(820px,86vw)]" /><div className="orb-wrap w1 left-[4%] absolute top-[16%] will-change-transform"><div className="hero-orb [background:radial-gradient(circle,rgba(15,181,163,.34),transparent_66%)] h-full w-full" /></div><div className="orb-wrap w2 absolute will-change-transform"><div className="hero-orb o2 [background:radial-gradient(circle,rgba(124,107,240,.32),transparent_66%)] h-full w-full" /></div><div className="orb-wrap w3 bottom-[2%] left-[16%] absolute will-change-transform"><div className="hero-orb o3 [background:radial-gradient(circle,rgba(42,143,227,.30),transparent_66%)] h-full w-full" /></div><a className="hero-chip c1 overflow-hidden top-1/5 w-[246px] [backdrop-filter:blur(12px)] [rotate:var(--tilt,-4deg)] [will-change:translate,transform]" aria-label="Explore Vibe product" href="/labs/vibehtml-50fc6648ceef8cb9"><img className="h-[138px] object-cover w-full [object-position:top_center]" src="/site-assets/a3f06b539cc017e4.webp" alt="Vibe — Live Events preview" loading="lazy" decoding="async" /><figcaption className="items-center text-(--ink) font-[family-name:var(--mono)] text-[10px] justify-between tracking-[.12em] uppercase"><span className="text-(--ink) font-bold">Vibe</span> <em className="text-(--ink-soft) text-[9.5px]">Live Events</em> <span className="chip-arw text-(--indigo) text-[12px] font-bold">↗</span></figcaption></a><a className="hero-chip c2 overflow-hidden top-[42%] w-[246px] [backdrop-filter:blur(12px)] [rotate:var(--tilt,-4deg)] [will-change:translate,transform]" aria-label="Explore KontentOS product" href="/labs/kontentoshtml-c0a2825079506ad9"><img className="h-[138px] object-cover w-full [object-position:top_center]" src="/site-assets/ae7317fcd9da9f39.webp" alt="KontentOS — Content Pipeline preview" loading="lazy" decoding="async" /><figcaption className="items-center text-(--ink) font-[family-name:var(--mono)] text-[10px] justify-between tracking-[.12em] uppercase"><span className="text-(--ink) font-bold">KontentOS</span> <em className="text-(--ink-soft) text-[9.5px]">Content Pipeline</em> <span className="chip-arw text-(--indigo) text-[12px] font-bold">↗</span></figcaption></a></div>
+      <div className="hero-stage inset-0 overflow-hidden pointer-events-none absolute z-0" aria-hidden="true"><div className="hero-aurora h-[125%] left-1/2 absolute top-[-14%] w-[150%] [background:radial-gradient(40%_52%_at_16%_40%,rgba(15,181,163,.17),transparent_70%),radial-gradient(38%_52%_at_84%_30%,rgba(124,107,240,.19),transparent_70%),radial-gradient(44%_58%_at_50%_4%,rgba(42,143,227,.15),transparent_72%)]" /><div className="hero-beam [background:conic-gradient(from_10deg,transparent_0_42deg,rgba(124,107,240,.12)_56deg,transparent_72deg,transparent_186deg,rgba(15,181,163,.10)_202deg,transparent_218deg)] h-[980px] left-1/2 absolute top-[34%] w-[980px] will-change-transform" /><div className="hero-spot [background:radial-gradient(52%_52%_at_50%_50%,rgba(255,255,255,.85),rgba(255,255,255,0)_72%)] left-1/2 absolute w-[min(820px,86vw)]" /><div className="orb-wrap w1 left-[4%] absolute top-[16%] will-change-transform"><div className="hero-orb [background:radial-gradient(circle,rgba(15,181,163,.34),transparent_66%)] h-full w-full" /></div><div className="orb-wrap w2 absolute will-change-transform"><div className="hero-orb o2 [background:radial-gradient(circle,rgba(124,107,240,.32),transparent_66%)] h-full w-full" /></div><div className="orb-wrap w3 bottom-[2%] left-[16%] absolute will-change-transform"><div className="hero-orb o3 [background:radial-gradient(circle,rgba(42,143,227,.30),transparent_66%)] h-full w-full" /></div><a className="hero-chip c1 overflow-hidden top-1/5 w-[246px] [backdrop-filter:blur(12px)] [rotate:var(--tilt,-4deg)] [will-change:translate,transform]" aria-label="Explore Vibe product" href="/labs/vibe.html"><img className="h-[138px] object-cover w-full [object-position:top_center]" src="/site-assets/a3f06b539cc017e4.webp" alt="Vibe — Live Events preview" loading="lazy" decoding="async" /><figcaption className="items-center text-(--ink) font-[family-name:var(--mono)] text-[10px] justify-between tracking-[.12em] uppercase"><span className="text-(--ink) font-bold">Vibe</span> <em className="text-(--ink-soft) text-[9.5px]">Live Events</em> <span className="chip-arw text-(--indigo) text-[12px] font-bold">↗</span></figcaption></a><a className="hero-chip c2 overflow-hidden top-[42%] w-[246px] [backdrop-filter:blur(12px)] [rotate:var(--tilt,-4deg)] [will-change:translate,transform]" aria-label="Explore KontentOS product" href="/labs/kontentos.html"><img className="h-[138px] object-cover w-full [object-position:top_center]" src="/site-assets/ae7317fcd9da9f39.webp" alt="KontentOS — Content Pipeline preview" loading="lazy" decoding="async" /><figcaption className="items-center text-(--ink) font-[family-name:var(--mono)] text-[10px] justify-between tracking-[.12em] uppercase"><span className="text-(--ink) font-bold">KontentOS</span> <em className="text-(--ink-soft) text-[9.5px]">Content Pipeline</em> <span className="chip-arw text-(--indigo) text-[12px] font-bold">↗</span></figcaption></a></div>
       <div className="wrap max-w-[1200px] relative z-2 [rotate:none] [scale:none]" style={{ translate: "none", opacity: "1", transform: "translate(0px, 0px)" } as CSSProperties}>
         <div className="eyebrow hr items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) font-[family-name:var(--mono)] gap-[9px]" style={{ transform: "translateY(0px) scale(1)", filter: "blur(0px)", opacity: "1" } as CSSProperties}>
           <i className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--teal) h-[6px] w-[6px]" />
@@ -216,7 +215,7 @@ function ImportedHeaderGotAProblemLet() {
           <div><span className="sc-w whitespace-pre">Got</span> <span className="sc-w whitespace-pre">a</span> <span className="sc-w whitespace-pre">problem?</span> <span className="grad [-webkit-text-fill-color:transparent]"><span className="sc-w whitespace-pre">Let's</span>{" "}<span className="sc-w whitespace-pre">build</span>{" "}<span className="sol"><span className="sc-w whitespace-pre">the</span>{" "}<span className="sc-w whitespace-pre">solution.</span></span></span></div>
         </h1>
         <p className="hr" style={{ transform: "translateY(0px) scale(1)", filter: "blur(0px)", opacity: "1" } as CSSProperties}>We love a challenge. Bring us an idea or a gnarly problem — custom tools, websites, automations and AI — and Swaniki Labs will put its best effort into solving it.</p>
-        <div className="hero-ctas hr flex-wrap gap-[14px] justify-center" style={{ transform: "translateY(0px) scale(1)", filter: "blur(0px)", opacity: "1" } as CSSProperties}><a className="btn btn-primary overflow-hidden" data-magnetic="" href="/contacthtml-030e61461fb49a1a">Bring us your challenge <span className="arrow items-center text-[13px] h-[26px] justify-center w-[26px]">↗</span></a><a className="btn btn-ghost" data-magnetic="" href="#labs">See what we've built</a></div>
+        <div className="hero-ctas hr flex-wrap gap-[14px] justify-center" style={{ transform: "translateY(0px) scale(1)", filter: "blur(0px)", opacity: "1" } as CSSProperties}><a className="btn btn-primary overflow-hidden" data-magnetic="" href="/contact.html">Bring us your challenge <span className="arrow items-center text-[13px] h-[26px] justify-center w-[26px]">↗</span></a><a className="btn btn-ghost" data-magnetic="" href="#labs">See what we've built</a></div>
       </div>
       <div className="wave-band hr w-full z-1" style={{ transform: "translateY(0px) scale(1)", filter: "blur(0px)", opacity: "1" } as CSSProperties}>
         <picture style={{ display: "contents" }}>
@@ -261,6 +260,7 @@ function ImportedSection() {
 }
 
 function ImportedSectionSwanikiLabs() {
+  const [category, setCategory] = useState("All");
   return (
     <section className="sec wrap max-w-[1200px] relative z-1" id="labs">
       <div className="sec-head reveal items-end flex-wrap gap-[20px] justify-between [rotate:none] [scale:none]" style={{ translate: "none", opacity: "0.9908", transform: "translate(0px, 0px)" } as CSSProperties}>
@@ -271,16 +271,16 @@ function ImportedSectionSwanikiLabs() {
           </div>
           <h2 className={"\x74ext-reveal in text-[clamp(25px,4.4vw,48px)] font-extrabold tracking-[-.035em] leading-[1.06]"}><span className={"\x74ext-reveal-word"} style={{ "--word-index": "0" } as CSSProperties}>Swaniki</span> <em className="text-(--indigo)"><span className={"\x74ext-reveal-word"} style={{ "--word-index": "1" } as CSSProperties}>Labs</span></em></h2>
           <p className={"sub \x6cine-reveal-ready in text-(--ink-soft) text-[15px] max-w-[38ch]"}>
-            <span className={"\x6cine-reveal-line"} style={{ "--line-index": "0" } as CSSProperties}>Whereachallengebecomesaproduct—yourideasandourown,prototypedandshippedbyhand.</span>
+            <span className={"\x6cine-reveal-line"} style={{ "--line-index": "0" } as CSSProperties}>Where a challenge becomes a product — your ideas and our own, prototyped and shipped by hand.</span>
           </p>
         </div>
-        <a className="sec-link items-center gap-[9px] whitespace-nowrap" href="/labshtml-ffe9d364ec6cac35">All Labs products <span className="arr">→</span></a>
-        <div className="rail-nav gap-[10px]"><button className="rail-btn items-center cursor-pointer text-[17px] h-[44px] justify-center w-[44px]" id="prev" aria-label="Scroll left">←</button><button className="rail-btn items-center cursor-pointer text-[17px] h-[44px] justify-center w-[44px]" id="next" aria-label="Scroll right">→</button></div>
+        <a className="sec-link items-center gap-[9px] whitespace-nowrap" href="/labs.html">All Labs products <span className="arr">→</span></a>
+        <div className="rail-nav gap-[10px]"><button className="rail-btn items-center cursor-pointer text-[17px] h-[44px] justify-center w-[44px]" id="prev" onClick={() => scrollRail("rail", -1)} aria-label="Scroll left">←</button><button className="rail-btn items-center cursor-pointer text-[17px] h-[44px] justify-center w-[44px]" id="next" onClick={() => scrollRail("rail", 1)} aria-label="Scroll right">→</button></div>
       </div>
-      <div className="pills reveal flex-wrap gap-[10px] [rotate:none] [scale:none]" style={{ translate: "none", opacity: "0.9908", transform: "translate(0px, 0px)" } as CSSProperties}><button className="pill active cursor-pointer text-[13.5px] font-semibold">All</button><button className="pill cursor-pointer text-[13.5px] font-semibold">AI &amp; Research</button><button className="pill cursor-pointer text-[13.5px] font-semibold">Creator Tools</button><button className="pill cursor-pointer text-[13.5px] font-semibold">Web Tools</button><button className="pill cursor-pointer text-[13.5px] font-semibold">Productivity</button><button className="pill cursor-pointer text-[13.5px] font-semibold">Finance</button><button className="pill cursor-pointer text-[13.5px] font-semibold">Community</button><button className="pill cursor-pointer text-[13.5px] font-semibold">Consumer Tech</button><button className="pill cursor-pointer text-[13.5px] font-semibold">Travel Intelligence</button></div>
+      <div className="pills reveal in flex-wrap gap-[10px]">{["All", "AI & Research", "Creator Tools", "Web Tools", "Productivity", "Finance", "Community", "Consumer Tech", "Travel Intelligence"].map(value => <button key={value} type="button" className={`pill cursor-pointer text-[13.5px] font-semibold${category === value ? " active" : ""}`} aria-pressed={category === value} onClick={() => { setCategory(value); document.getElementById("rail")?.scrollTo({left: 0}); }}>{value}</button>)}</div>
       <div className="reveal relative [rotate:none] [scale:none]" style={{ translate: "none", opacity: "1", transform: "translate(0px, 0px)" } as CSSProperties}>
         <div className="rail cursor-grab gap-[24px] overflow-x-auto [-ms-overflow-style:none] [scroll-snap-type:x_mandatory] [scrollbar-width:none]" id="rail">
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/findmytriphtml-79fda8f303a2e4ba">
+          <a hidden={category !== "All" && !"Consumer Tech, Travel Intelligence".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/findmytrip.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(15, 181, 163), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -319,7 +319,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/foundersignalhtml-4f9a0e5189d421ad">
+          <a hidden={category !== "All" && !"AI & Research".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/foundersignal.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(15, 181, 163), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -358,7 +358,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/labs/kontentoshtml-c0a2825079506ad9">
+          <a hidden={category !== "All" && !"Productivity".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/labs/kontentos.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(91, 83, 230), rgb(124, 107, 240))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -397,7 +397,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/labs/vibehtml-50fc6648ceef8cb9">
+          <a hidden={category !== "All" && !"Community".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/labs/vibe.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(42, 143, 227), rgb(15, 181, 163))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -436,7 +436,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(124,107,240)", "--c2": "rgb(240,120,140)" } as CSSProperties} data-shot="1" href="/labs/lead-intelligencehtml-60cdb3d18b944155">
+          <a hidden={category !== "All" && !"AI & Research".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(124,107,240)", "--c2": "rgb(240,120,140)" } as CSSProperties} data-shot="1" href="/labs/lead-intelligence.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(124, 107, 240), rgb(240, 120, 140))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -475,7 +475,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/labs/website-doctor-v2html-2f5331659df0a692">
+          <a hidden={category !== "All" && !"Web Tools".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/labs/website-doctor-v2.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(42, 143, 227), rgb(124, 107, 240))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -514,7 +514,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/labs/website-builderhtml-12cea195304e667d">
+          <a hidden={category !== "All" && !"Creator Tools".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/labs/website-builder.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(91, 83, 230), rgb(15, 181, 163))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -553,7 +553,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(240,120,140)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/labs/event-aggregatorhtml-b4a21ec2e01d9287">
+          <a hidden={category !== "All" && !"Community".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(240,120,140)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/labs/event-aggregator.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(240, 120, 140), rgb(124, 107, 240))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -592,7 +592,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/swatrackhtml-43ea34c58c7c9142">
+          <a hidden={category !== "All" && !"Productivity".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/swatrack.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(15, 181, 163), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -631,7 +631,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(91,83,230)" } as CSSProperties} data-shot="1" href="/labs/invoicerhtml-7402e616e1dda3ad">
+          <a hidden={category !== "All" && !"Finance".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(91,83,230)" } as CSSProperties} data-shot="1" href="/labs/invoicer.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(42, 143, 227), rgb(91, 83, 230))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -670,7 +670,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="https://mailjaiswal.github.io/2048-game/" rel="noopener" target="_blank">
+          <a hidden={category !== "All" && !"Interactive".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="https://mailjaiswal.github.io/2048-game/" rel="noopener" target="_blank">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(42, 143, 227), rgb(15, 181, 163))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -709,7 +709,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/labs/rfqclubhtml-42ceb9680f48d04a">
+          <a hidden={category !== "All" && !"Procurement".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/labs/rfqclub.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(42, 143, 227), rgb(15, 181, 163))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -748,7 +748,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/labs/tap-togglehtml-e4dd3843e7b804ef">
+          <a hidden={category !== "All" && !"Automation".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/labs/tap-toggle.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(91, 83, 230), rgb(124, 107, 240))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -787,7 +787,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/myhrhtml-14be143af204d49e">
+          <a hidden={category !== "All" && !"Productivity".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/myhr.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(15, 181, 163), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -826,7 +826,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(124,107,240)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/gmbhtml-41f6571dd7dbb9bd">
+          <a hidden={category !== "All" && !"Marketing".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(124,107,240)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/labs/gmb.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(124, 107, 240), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -865,7 +865,7 @@ function ImportedSectionSwanikiLabs() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(234,91,35)", "--c2": "rgb(245,158,66)" } as CSSProperties} data-shot="1" href="/labs/swapikihtml-83ec082f772f4833">
+          <a hidden={category !== "All" && !"Careers".split(", ").includes(category)} className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(234,91,35)", "--c2": "rgb(245,158,66)" } as CSSProperties} data-shot="1" href="/labs/swapiki.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(234, 91, 35), rgb(245, 158, 66))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -905,7 +905,7 @@ function ImportedSectionSwanikiLabs() {
             </div>
           </a>
         </div>
-        <button className="rail-cue items-center text-white cursor-pointer h-[54px] justify-center w-[54px] z-6" aria-label="Scroll products">
+        <button className="rail-cue items-center text-white cursor-pointer h-[54px] justify-center w-[54px] z-6" onClick={() => scrollRail("rail", 1)} aria-label="Scroll products">
           <svg className="fill-none h-[22px] stroke-white w-[22px] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:2.4]" viewBox="0 0 24 24">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
@@ -926,15 +926,15 @@ function ImportedSectionSwanikiTechnologies() {
           </div>
           <h2 className={"\x74ext-reveal in text-[clamp(25px,4.4vw,48px)] font-extrabold tracking-[-.035em] leading-[1.06]"}><span className={"\x74ext-reveal-word"} style={{ "--word-index": "0" } as CSSProperties}>Swaniki</span> <em className="text-(--indigo)"><span className={"\x74ext-reveal-word"} style={{ "--word-index": "1" } as CSSProperties}>Technologies</span></em></h2>
           <p className={"sub \x6cine-reveal-ready in text-(--ink-soft) text-[15px] max-w-[38ch]"}>
-            <span className={"\x6cine-reveal-line"} style={{ "--line-index": "0" } as CSSProperties}>Websiteswe'vedesignedandshippedforclients—fast,responsive,andbuilttoconvert.</span>
+            <span className={"\x6cine-reveal-line"} style={{ "--line-index": "0" } as CSSProperties}>Websites we've designed and shipped for clients — fast, responsive, and built to convert.</span>
           </p>
         </div>
-        <a className="sec-link items-center gap-[9px] whitespace-nowrap" href="/technologieshtml-1df41b6d05675be9">All client websites <span className="arr">→</span></a>
-        <div className="rail-nav gap-[10px]"><button className="rail-btn items-center cursor-pointer text-[17px] h-[44px] justify-center w-[44px]" aria-label="Scroll left">←</button><button className="rail-btn items-center cursor-pointer text-[17px] h-[44px] justify-center w-[44px]" aria-label="Scroll right">→</button></div>
+        <a className="sec-link items-center gap-[9px] whitespace-nowrap" href="/technologies.html">All client websites <span className="arr">→</span></a>
+        <div className="rail-nav gap-[10px]"><button className="rail-btn items-center cursor-pointer text-[17px] h-[44px] justify-center w-[44px]" onClick={() => scrollRail("railTech", -1)} aria-label="Scroll left">←</button><button className="rail-btn items-center cursor-pointer text-[17px] h-[44px] justify-center w-[44px]" onClick={() => scrollRail("railTech", 1)} aria-label="Scroll right">→</button></div>
       </div>
       <div className="reveal relative [rotate:none] [scale:none]" style={{ translate: "none", opacity: "1", transform: "translate(0px, 0px)" } as CSSProperties}>
         <div className="rail cursor-grab gap-[24px] overflow-x-auto [-ms-overflow-style:none] [scroll-snap-type:x_mandatory] [scrollbar-width:none]" id="railTech">
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/websites/yash-hondahtml-196b09df0c178351">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/websites/yash-honda.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(15, 181, 163), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -973,7 +973,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(240,120,140)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/websites/between-your-bunshtml-3c4e27c0220e4685">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(240,120,140)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/websites/between-your-buns.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(240, 120, 140), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1012,7 +1012,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/websites/novoeximhtml-fb54a1e2a17a040d">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(42,143,227)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/websites/novoexim.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(42, 143, 227), rgb(15, 181, 163))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1051,7 +1051,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/websites/gs-consultantshtml-e77a51d49981f1b5">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/websites/gs-consultants.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(91, 83, 230), rgb(124, 107, 240))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1090,7 +1090,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/websites/garahtml-78f782fc194d90ee">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/websites/gara.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(15, 181, 163), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1129,7 +1129,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/websites/ankur-jaiswalhtml-1caf08c6fce78692">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/websites/ankur-jaiswal.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(91, 83, 230), rgb(124, 107, 240))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1168,7 +1168,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(124,107,240)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/websites/coffee-factoryhtml-dbaf61cfaeccfe23">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(124,107,240)", "--c2": "rgb(42,143,227)" } as CSSProperties} data-shot="1" href="/websites/coffee-factory.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(124, 107, 240), rgb(42, 143, 227))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1207,7 +1207,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(124,107,240)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/websites/boutique-hotelhtml-d5f9f09deebb1c61">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(124,107,240)", "--c2": "rgb(15,181,163)" } as CSSProperties} data-shot="1" href="/websites/boutique-hotel.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(124, 107, 240), rgb(15, 181, 163))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1246,7 +1246,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(240,120,140)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/websites/myra-studiohtml-5422f6f15944d28d">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(240,120,140)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/websites/myra-studio.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(240, 120, 140), rgb(124, 107, 240))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1285,7 +1285,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/websites/hairporthtml-7390de30c088c040">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(91,83,230)", "--c2": "rgb(124,107,240)" } as CSSProperties} data-shot="1" href="/websites/hairport.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(91, 83, 230), rgb(124, 107, 240))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1324,7 +1324,7 @@ function ImportedSectionSwanikiTechnologies() {
               </div>
             </div>
           </a>
-          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(91,83,230)" } as CSSProperties} data-shot="1" href="/websites/executive-portfoliohtml-749ba432870049d3">
+          <a className="card cursor-pointer overflow-hidden w-[calc((100%_-_24px)/1.2)] will-change-transform [scroll-snap-align:start]" style={{ "--c1": "rgb(15,181,163)", "--c2": "rgb(91,83,230)" } as CSSProperties} data-shot="1" href="/websites/executive-portfolio.html">
             <div className="mock inset-0 overflow-hidden absolute z-0" style={{ background: "radial-gradient(120% 90% at 22% 0%, rgb(15, 181, 163), rgb(91, 83, 230))" }}>
               <div className="absolute top-[190px] left-[22px] right-[22px] h-[212px] [background:rgba(255,_255,_255,_0.1)]" style={{ borderRadius: "18px", border: "1px solid rgba(255, 255, 255, 0.18)", backdropFilter: "blur(6px)", padding: "16px" } as CSSProperties}>
                 <div className="[gap:6px]" style={{ display: "flex" }}>
@@ -1364,7 +1364,7 @@ function ImportedSectionSwanikiTechnologies() {
             </div>
           </a>
         </div>
-        <button className="rail-cue items-center text-white cursor-pointer h-[54px] justify-center w-[54px] z-6" aria-label="Scroll websites">
+        <button className="rail-cue items-center text-white cursor-pointer h-[54px] justify-center w-[54px] z-6" onClick={() => scrollRail("railTech", 1)} aria-label="Scroll websites">
           <svg className="fill-none h-[22px] stroke-white w-[22px] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:2.4]" viewBox="0 0 24 24">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
@@ -1382,7 +1382,7 @@ function ImportedSectionAClearPathFrom() {
           <div className="k text-(--indigo) font-[family-name:var(--mono)] text-[11px] tracking-[.2em] uppercase">How we work</div>
           <h2 className={"\x74ext-reveal in text-[clamp(34px,4.6vw,58px)] font-extrabold tracking-[-.04em] leading-[1.02]"}><span className={"\x74ext-reveal-word"} style={{ "--word-index": "0" } as CSSProperties}>A</span> <span className={"\x74ext-reveal-word"} style={{ "--word-index": "1" } as CSSProperties}>clear</span> <span className={"\x74ext-reveal-word"} style={{ "--word-index": "2" } as CSSProperties}>path</span> <span className={"\x74ext-reveal-word"} style={{ "--word-index": "3" } as CSSProperties}>from</span> <em className="text-(--indigo)"><span className={"\x74ext-reveal-word"} style={{ "--word-index": "4" } as CSSProperties}>idea</span>{" "}<span className={"\x74ext-reveal-word"} style={{ "--word-index": "5" } as CSSProperties}>to</span>{" "}<span className={"\x74ext-reveal-word"} style={{ "--word-index": "6" } as CSSProperties}>impact.</span></em></h2>
           <p className={"sub \x6cine-reveal-ready in text-(--ink-soft) text-[16.5px] leading-[1.62] max-w-[36ch]"}>
-            <span className={"\x6cine-reveal-line"} style={{ "--line-index": "0" } as CSSProperties}>Fourrepeatablestagestakeyoufromfirstconversationtoaproductthatkeepsimprovinglongafterlaunch.</span>
+            <span className={"\x6cine-reveal-line"} style={{ "--line-index": "0" } as CSSProperties}>Four repeatable stages take you from first conversation to a product that keeps improving long after launch.</span>
           </p>
           <ol className={"\x6d-steps list-none"} id="mSteps">
             <li className={"\x6d-step items-center text-[15px] font-semibold gap-[14px] tracking-[-.01em]"}>
@@ -1409,7 +1409,7 @@ function ImportedSectionAClearPathFrom() {
           <div className={"\x6d-progress bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--line) h-[3px] overflow-hidden"}>
             <i className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--g) h-full" style={{ width: "100%" }} id="mProg" />
           </div>
-          <a className={"\x6d-link items-center gap-[9px]"} href="/abouthtml-db5b16407156eab2#how-we-build">Our process in depth <span className="a items-center h-[30px] justify-center w-[30px]">↗</span></a>
+          <a className={"\x6d-link items-center gap-[9px]"} href="/about.html#how-we-build">Our process in depth <span className="a items-center h-[30px] justify-center w-[30px]">↗</span></a>
         </div>
         <div className={"\x6d-right flex-col gap-[26px]"} id="mRight">
           <article className={"\x6d-card reveal past overflow-hidden [rotate:none] [scale:none]"} style={{ translate: "none", opacity: "1", transform: "translate(0px, 0px)" } as CSSProperties}>
@@ -1447,61 +1447,7 @@ function ImportedArticleWanderBeyondTheHorizon() {
     <article className="sp bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white min-h-[520px] overflow-hidden relative z-auto [@media(max-width:820px)]:min-h-[520px]">
       <div className="sp-inner bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white text-site-import-primary h-full overflow-hidden relative [@media(max-width:820px)]:h-full [@media(max-width:820px)]:min-h-[520px]">
         <div className="sp-media sp-frame h-[44%] top-0 right-0 bottom-auto left-0 absolute z-0">
-          <div className="lov-embed-0" title="Custom automation — interactive build demo">
-            <div style={{ pointerEvents: "none" }} id="scene" aria-hidden="true">
-              <img className="w-[478px] h-[242px]" style={{ display: "block", pointerEvents: "none" }} width="478" height="242" src="data:image/png;base64,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" data-site-import-static-fallback="canvas" alt="" />
-            </div>
-            <div className="sun-soft" aria-hidden="true" />
-            <div className="vignette" aria-hidden="true" />
-            <div className="grain mix-blend-multiply" aria-hidden="true" />
-            <div id="webgl-note" hidden>This page needs WebGL to render its 3D sky. Try a modern browser, or an internet connection to load the renderer.</div>
-            <header className="nav">
-              <div className="nav-inner">
-                <a className="brand" href="/demos/open-code">{"\n      "}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffb159" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{"\n        "}<circle cx="12" cy="12" r="9" />{"\n        "}<path d="M15.5 8.5l-2 5-3.2-1.4z" />{"\n      "}</svg>
-          Wayfarer
-        </a>
-                <nav className="nav-links" aria-label="Primary"><a href="/demos/open-code">Destinations</a><a href="/demos/open-code">Trips</a><a href="/demos/open-code">Journal</a><a href="/demos/open-code">About</a></nav>
-                <button className="btn btn-signin" type="button">Sign in</button>
-              </div>
-            </header>
-            <main className="hero overflow-hidden text-center">
-              <div className="hero-inner">
-                <p className="eyebrow items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) font-[family-name:var(--mono)] gap-[9px]">Now booking 2027 expeditions</p>
-                <h1 className="text-(--ink)"><span className="line"><span>Wander beyond</span></span><span className="line"><span>the <span className="accent">horizon</span></span></span></h1>
-                <p className="sub">
-          Handcrafted journeys across 60+ countries. We handle the route,
-          you keep the memories worth keeping.
-        </p>
-                <div className="cta-row"><a className="btn btn-primary overflow-hidden" href="/demos/open-code">Start your journey</a><a className="btn btn-ghost" href="/demos/open-code">{"\n        "}<svg viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 1.5l9 5.5-9 5.5z" /></svg>
-            Watch the film
-          </a></div>
-                <div className="stats">
-                  <div className="stat">
-                    <b>60<i>+</i></b>
-                    <span>Countries</span>
-                  </div>
-                  <div className="stat">
-                    <b>300<i>+</i></b>
-                    <span>Curated trips</span>
-                  </div>
-                  <div className="stat">
-                    <b>4.9</b>
-                    <span>Traveler rating</span>
-                  </div>
-                </div>
-              </div>
-            </main>
-            <a className="trip-card" href="/demos/open-code">
-              <div className="trip-thumb">
-                <img src="/site-assets/ec88b6c6f15a59cf.jpg" alt="Santorini coastline at golden hour" loading="lazy" />
-              </div>
-              <div className="trip-body">
-                <h3 className="trip-title text-site-import-primary leading-[1.08]">Santorini, Greece</h3>
-                <p className="trip-meta">Catamaran at golden hour, 7 days</p>
-                <div className="trip-row"><span className="trip-price">$1,890 per traveler</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{"\n        "}<path d="M3 13L13 3M6 3h7v7" />{"\n      "}</svg></div>
-              </div>
-            </a>
-          </div>
+          <img className="automation-still" src="/site-assets/automation-preview.png" alt="Custom automation interactive build demonstration" data-site-import-static-fallback="automation-demo" />
         </div>
         <div className="inset-0 pointer-events-none absolute z-1" />
         <span className="sn text-white font-[family-name:var(--mono)] text-[11px] font-semibold left-[12px] tracking-[.2em] absolute uppercase top-[12px] z-10 [backdrop-filter:blur(8px)] [text-shadow:none]">02 · Automation</span>
@@ -1513,7 +1459,7 @@ function ImportedArticleWanderBeyondTheHorizon() {
             <span className="text-[#334155] font-semibold">Integrations</span>
             <span className="text-[#334155] font-semibold">AI-assisted tooling</span>
           </div>
-          <a className="sp-action-btn sp-action-btn--dot-morph items-center gap-[8px]" href="/contacthtml-030e61461fb49a1a"><span className="sp-action-dot" aria-hidden="true" />Start a project →</a>
+          <a className="sp-action-btn sp-action-btn--dot-morph items-center gap-[8px]" href="/contact.html"><span className="sp-action-dot" aria-hidden="true" />Start a project →</a>
         </div>
       </div>
     </article>
@@ -1532,10 +1478,10 @@ function ImportedFooter() {
             <p className="leading-[1.62]">An IT studio building SaaS products, custom automations and modern websites — engineered to perform, designed to last.</p>
             <div className="foot-social gap-[12px]"><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="X" href="https://x.com" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M18.9 2H22l-6.9 7.9L23 22h-6.4l-5-6.1L5.9 22H2.8l7.4-8.4L1.5 2H8l4.5 5.6L18.9 2Zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20Z" /></svg></a><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="LinkedIn" href="https://linkedin.com" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M6.94 5A1.94 1.94 0 1 1 3.06 5a1.94 1.94 0 0 1 3.88 0ZM3.4 8.4h3.1V21H3.4V8.4Zm5.3 0h2.97v1.72h.04c.41-.78 1.42-1.6 2.93-1.6 3.13 0 3.71 2.06 3.71 4.74V21h-3.1v-5.56c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94V21H8.7V8.4Z" /></svg></a><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="YouTube" href="https://youtube.com" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z" /></svg></a><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="Threads" href="https://threads.net" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M12.19 2.38a9.8 9.8 0 0 0-2 .2 6.5 6.5 0 0 0-4.5 2.33A6.4 6.4 0 0 0 4.2 9.6c-.06 1.03.06 2.2.3 3.15a9.7 9.7 0 0 0 1.34 3.05 6.7 6.7 0 0 0 5.85 3.34c1.75.05 3.44-.46 5.17-1.02a11 11 0 0 0 1.86-.73 6.56 6.56 0 0 1-2.98 4.55 6.64 6.64 0 0 1-3.22.86 5.26 5.26 0 0 1-3.6-1.6.68.68 0 0 0-.42-.2.63.63 0 0 0-.46.15c-.36.27-1.07.8-1 1.5.1.85 1.6 1.92 2.72 2.31.79.27 1.51.44 2.22.55.54.08 1.1.1 1.64.08a11.6 11.6 0 0 0 3.48-.55 8.3 8.3 0 0 0 4.7-4.25 11.1 11.1 0 0 0 .96-2.31 6.2 6.2 0 0 0 .2-2.3c-.06-.52-.13-1.9-.19-2.4-.1-.68-.2-1.29-.32-1.77a9.6 9.6 0 0 0-1.3-2.88.73.73 0 0 0-.6-.35h-.27a.73.73 0 0 0-.5.19.7.7 0 0 0-.23.42c.02.33.05.66.08 1-.02 0-.02-.01-.05 0-1.35-.9-3.14-1.48-5.2-1.48Zm.05 3.68c1.56 0 2.9.5 3.96 1.41.06.05.06.14.01.2a8.8 8.8 0 0 1-.65.74c-.3.26-.36.32-.55.85a6.6 6.6 0 0 0-.33 1.7c-.03.54.02 1.17.14 1.88.07.41.1.62.13.8l.04.23c.05.26.07.4.08.52.02.2.01.6-.09.84l-.11.28c-.23.64-.78 1.4-1.36 1.88-.62.5-1.36.83-2.03.83-.7 0-1.32-.4-1.72-1.12-.3-.55-.3-1.3.04-2.2.14-.4.34-.87.58-1.4l.15-.29c.08-.15.15-.3.22-.45.43-.9.83-1.76 1.2-2.6a5.9 5.9 0 0 0 .38-1.12.62.62 0 0 0-.5-.77.6.6 0 0 0-.7.42c-.04.16-.1.54-.12.7a13.4 13.4 0 0 1-.03.72.66.66 0 0 1-.4.5.66.66 0 0 1-.62-.08 2.8 2.8 0 0 1-.38-.4l-.26-.4a.7.7 0 0 1-.08-.57.64.64 0 0 1 .34-.4c.5-.3.88-.7 1.1-1.2.12-.27.16-.6.07-.92-.1-.34-.34-.5-.72-.5Zm.02 3.4c-.42.95-.93 1.87-1.43 2.78-.22.4-.43.8-.61 1.18v.02c-.06.15-.13.34-.16.47-.11.4-.13.7-.06.92.07.23.26.48.5.65.27.2.66.3 1.14.3.55 0 1.15-.28 1.66-.7.5-.4.94-.97 1.13-1.36.12-.24.22-.7.24-1.14.01-.16-.01-.42-.04-.71a9.5 9.5 0 0 0-.12-.7l-.05-.2c-.03-.12-.1-.36-.22-.56l-.13-.23c-.23-.4-.56-.76-.88-1.16-.04.02 0 0-.01 0q0 0-.01 0Z" /></svg></a><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="Instagram" href="https://instagram.com" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38a3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05 0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.76.72 1.4 1.38 2.06a5.9 5.9 0 0 0 2.06 1.38c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.06-1.38 5.9 5.9 0 0 0 1.38-2.06c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.06A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84Zm0 10.15a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z" /></svg></a></div>
           </div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Products · Labs</h4><a className="leading-[1.42]" href="/labs/findmytriphtml-79fda8f303a2e4ba">FindMyTrip</a><a className="leading-[1.42]" href="/labs/foundersignalhtml-4f9a0e5189d421ad">FounderSignal</a><a className="leading-[1.42]" href="/labs/kontentoshtml-c0a2825079506ad9">KontentOS</a><a className="leading-[1.42]" href="/labs/vibehtml-50fc6648ceef8cb9">Vibe</a><a className="leading-[1.42]" href="/labs/lead-intelligencehtml-60cdb3d18b944155">Lead Intelligence</a><a className="leading-[1.42]" href="/labs/website-doctor-v2html-2f5331659df0a692">Website Doctor</a><a className="leading-[1.42]" href="/labs/website-builderhtml-12cea195304e667d">Website Builder</a><a className="leading-[1.42]" href="/labs/invoicerhtml-7402e616e1dda3ad">Invoicer</a><a className="leading-[1.42]" href="/labshtml-ffe9d364ec6cac35">All products →</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Websites · Technologies</h4><a className="leading-[1.42]" href="/websites/novoeximhtml-fb54a1e2a17a040d">NovoExim</a><a className="leading-[1.42]" href="/websites/executive-portfoliohtml-749ba432870049d3">Executive Portfolio</a><a className="leading-[1.42]" href="/websites/yash-hondahtml-196b09df0c178351">Yash Honda</a><a className="leading-[1.42]" href="/websites/hairporthtml-7390de30c088c040">Hairport Salon</a><a className="leading-[1.42]" href="/websites/coffee-factoryhtml-dbaf61cfaeccfe23">The Coffee Factory</a><a className="leading-[1.42]" href="/technologieshtml-1df41b6d05675be9">All websites →</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Studio</h4><a className="leading-[1.42]" href="/abouthtml-db5b16407156eab2#services">Services</a><a className="leading-[1.42]" href="/abouthtml-db5b16407156eab2#about">About</a><a className="leading-[1.42]" href="/careershtml-263d6d2aa1009c5e">Careers</a><a className="leading-[1.42]" href="/indexhtml-213456c5dc963e03#method">How we work</a><a className="leading-[1.42]" href="/contacthtml-030e61461fb49a1a">Contact us</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Legal</h4><a className="leading-[1.42]" href="/contacthtml-030e61461fb49a1a">Privacy Policy</a><a className="leading-[1.42]" href="/contacthtml-030e61461fb49a1a">Terms of Service</a><a className="leading-[1.42]" href="/contacthtml-030e61461fb49a1a">Disclaimer</a><a className="leading-[1.42]" href="/contacthtml-030e61461fb49a1a">Cookie Policy</a></div>
+          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Products · Labs</h4><a className="leading-[1.42]" href="/labs/findmytrip.html">FindMyTrip</a><a className="leading-[1.42]" href="/labs/foundersignal.html">FounderSignal</a><a className="leading-[1.42]" href="/labs/kontentos.html">KontentOS</a><a className="leading-[1.42]" href="/labs/vibe.html">Vibe</a><a className="leading-[1.42]" href="/labs/lead-intelligence.html">Lead Intelligence</a><a className="leading-[1.42]" href="/labs/website-doctor-v2.html">Website Doctor</a><a className="leading-[1.42]" href="/labs/website-builder.html">Website Builder</a><a className="leading-[1.42]" href="/labs/invoicer.html">Invoicer</a><a className="leading-[1.42]" href="/labs.html">All products →</a></div>
+          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Websites · Technologies</h4><a className="leading-[1.42]" href="/websites/novoexim.html">NovoExim</a><a className="leading-[1.42]" href="/websites/executive-portfolio.html">Executive Portfolio</a><a className="leading-[1.42]" href="/websites/yash-honda.html">Yash Honda</a><a className="leading-[1.42]" href="/websites/hairport.html">Hairport Salon</a><a className="leading-[1.42]" href="/websites/coffee-factory.html">The Coffee Factory</a><a className="leading-[1.42]" href="/technologies.html">All websites →</a></div>
+          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Studio</h4><a className="leading-[1.42]" href="/about.html#services">Services</a><a className="leading-[1.42]" href="/about.html#about">About</a><a className="leading-[1.42]" href="/careers.html">Careers</a><a className="leading-[1.42]" href="/#method">How we work</a><a className="leading-[1.42]" href="/contact.html">Contact us</a></div>
+          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Legal</h4><a className="leading-[1.42]" href="/contact.html">Privacy Policy</a><a className="leading-[1.42]" href="/contact.html">Terms of Service</a><a className="leading-[1.42]" href="/contact.html">Disclaimer</a><a className="leading-[1.42]" href="/contact.html">Cookie Policy</a></div>
         </div>
         <div className="foot-legal items-center text-(--ink-soft) flex-wrap text-[12.5px] gap-[16px] justify-between">
           <p>© 2026 <b className="[color:var(--ink)]">Swaniki LLP</b> — Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.</p>
@@ -1547,113 +1493,25 @@ function ImportedFooter() {
 }
 
 
+function scrollRail(id: string, direction: number) {
+  const rail = document.getElementById(id);
+  if (!rail) return;
+  rail.scrollBy({ left: direction * rail.clientWidth * .85, behavior: "smooth" });
+}
+
 function useImportedLayout() {
+  const [collapsed, setCollapsed] = useState(false);
+  const [bandProgress, setBandProgress] = useState(1);
   useEffect(() => {
-    const scrollingAreas = Array.from(document.querySelectorAll<HTMLElement>("[data-site-import-scroll-root]"));
-    const scrollTop = () =>
-      scrollingAreas.find(
-        (node) =>
-          node.clientHeight > 0 &&
-          node.scrollHeight > node.clientHeight &&
-          /^(auto|scroll)$/.test(getComputedStyle(node).overflowY),
-      )?.scrollTop ?? window.scrollY;
-    const scrollHeaders = Array.from(document.querySelectorAll<HTMLElement>("[data-site-import-scroll-header]"))
-      .slice(0, 128)
-      .flatMap((node) => {
-        try {
-          const states = JSON.parse(node.dataset["siteImportScrollHeader"] || "{}");
-          if (!states || typeof states !== "object") return [];
-          for (const key of ["desktop", "mobile"]) {
-            const state = states[key];
-            if (
-              !state ||
-              !Array.isArray(state.added) ||
-              !Array.isArray(state.removed) ||
-              state.added.length + state.removed.length > 32
-            )
-              delete states[key];
-          }
-          return [
-            {
-              node,
-              states,
-              original: new Set(node.classList),
-              originalFill: node.getAttribute("fill"),
-              transform: node.style.getPropertyValue("transform"),
-              priority: node.style.getPropertyPriority("transform"),
-            },
-          ];
-        } catch {
-          return [];
-        }
-      });
-    function syncScrollHeaders(reset = false) {
-      for (const { node, states, original, originalFill, transform, priority } of scrollHeaders) {
-        if (!reset && node.getAttribute("data-import-menu-open") === "true") continue;
-        const state = states[innerWidth < 768 ? "mobile" : "desktop"];
-        if ([states.desktop, states.mobile].some((entry) => entry && Object.hasOwn(entry, "fill"))) {
-          if (originalFill === null) node.removeAttribute("fill");
-          else node.setAttribute("fill", originalFill);
-        }
-        if (states.desktop?.transform || states.mobile?.transform) {
-          if (transform) node.style.setProperty("transform", transform, priority);
-          else node.style.removeProperty("transform");
-        }
-        for (const value of [states.desktop, states.mobile].filter(Boolean) as {
-          added: string[];
-          removed: string[];
-        }[]) {
-          for (const token of [...(value.added || []), ...(value.removed || [])]) {
-            if (typeof token !== "string" || !token || /\s/.test(token)) continue;
-            node.classList.toggle(token, original.has(token));
-          }
-        }
-        if (reset || !state || !Number.isFinite(state.threshold) || scrollTop() < state.threshold) continue;
-        let until = state.until;
-        if (
-          typeof state.untilAnchor === "string" &&
-          /^\d$/.test(state.untilAnchor) &&
-          Number.isFinite(state.untilProgress) &&
-          Math.abs(state.untilProgress) <= 2
-        ) {
-          const anchor = document.querySelector<HTMLElement>(
-            '[data-site-import-header-end="' + state.untilAnchor + '"]',
-          );
-          if (anchor) until = anchor.getBoundingClientRect().top + scrollTop() + innerHeight * state.untilProgress;
-        }
-        if (Number.isFinite(until) && scrollTop() >= until) continue;
-        if (state.fill === null) node.removeAttribute("fill");
-        else if (typeof state.fill === "string" && state.fill.length <= 256 && !/url\(/i.test(state.fill))
-          node.setAttribute("fill", state.fill);
-        if (
-          typeof state.transform === "string" &&
-          state.transform.length <= 128 &&
-          CSS.supports("transform", state.transform)
-        )
-          node.style.setProperty("transform", state.transform, "important");
-        for (const token of state.added || [])
-          if (typeof token === "string" && token && !/\s/.test(token)) node.classList.add(token);
-        for (const token of state.removed || [])
-          if (typeof token === "string" && token && !/\s/.test(token)) node.classList.remove(token);
-      }
-    }
-    const handleScroll = () => {
-      syncScrollHeaders();
+    const update = () => {
+      setCollapsed(window.scrollY >= (window.innerWidth < 768 ? 633 : 648));
+      const band = document.getElementById("band");
+      if (band) setBandProgress(Math.max(0, Math.min(1, 1 - Math.max(0, -band.getBoundingClientRect().top) / (window.innerHeight * .3))));
     };
-    function resizeSummaries() {
-      syncScrollHeaders();
-    }
-    document.addEventListener("load", handleScroll, true);
-    resizeSummaries();
-    const parallaxFrame = requestAnimationFrame(handleScroll);
-    window.addEventListener("resize", resizeSummaries);
-    document.addEventListener("scroll", handleScroll, { passive: true, capture: true });
-    return () => {
-      cancelAnimationFrame(parallaxFrame);
-      syncScrollHeaders(true);
-      document.removeEventListener("load", handleScroll, true);
-      window.removeEventListener("resize", resizeSummaries);
-      document.removeEventListener("scroll", handleScroll, true);
-    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => { window.removeEventListener("scroll", update); window.removeEventListener("resize", update); };
   }, []);
+  return { collapsed, bandProgress };
 }

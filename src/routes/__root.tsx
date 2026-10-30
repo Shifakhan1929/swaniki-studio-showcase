@@ -79,14 +79,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Swaniki | Digital Product Studio" },
+      { name: "description", content: "Swaniki Labs products, websites and custom automation." },
+      { name: "author", content: "Swaniki" },
+      { property: "og:title", content: "Swaniki | Digital Product Studio" },
+      { property: "og:description", content: "Swaniki Labs products, websites and custom automation." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
