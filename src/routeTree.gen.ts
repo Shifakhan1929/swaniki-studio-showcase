@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutDothtmlRouteImport } from './routes/about[.]html'
-import { Route as CareersRouteImport } from './routes/careers'
+import { Route as CareersDothtmlRouteImport } from './routes/careers[.]html'
 import { Route as ContactDothtmlRouteImport } from './routes/contact[.]html'
 import { Route as LabsDothtmlRouteImport } from './routes/labs[.]html'
 import { Route as TechnologiesDothtmlRouteImport } from './routes/technologies[.]html'
@@ -26,9 +26,9 @@ const AboutDothtmlRoute = AboutDothtmlRouteImport.update({
   path: '/about.html',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CareersRoute = CareersRouteImport.update({
-  id: '/careers',
-  path: '/careers',
+const CareersDothtmlRoute = CareersDothtmlRouteImport.update({
+  id: '/careers.html',
+  path: '/careers.html',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactDothtmlRoute = ContactDothtmlRouteImport.update({
@@ -50,7 +50,7 @@ const TechnologiesDothtmlRoute = TechnologiesDothtmlRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about.html': typeof AboutDothtmlRoute
-  '/careers': typeof CareersRoute
+  '/careers.html': typeof CareersDothtmlRoute
   '/contact.html': typeof ContactDothtmlRoute
   '/labs.html': typeof LabsDothtmlRoute
   '/technologies.html': typeof TechnologiesDothtmlRoute
@@ -58,7 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about.html': typeof AboutDothtmlRoute
-  '/careers': typeof CareersRoute
+  '/careers.html': typeof CareersDothtmlRoute
   '/contact.html': typeof ContactDothtmlRoute
   '/labs.html': typeof LabsDothtmlRoute
   '/technologies.html': typeof TechnologiesDothtmlRoute
@@ -67,7 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about.html': typeof AboutDothtmlRoute
-  '/careers': typeof CareersRoute
+  '/careers.html': typeof CareersDothtmlRoute
   '/contact.html': typeof ContactDothtmlRoute
   '/labs.html': typeof LabsDothtmlRoute
   '/technologies.html': typeof TechnologiesDothtmlRoute
@@ -77,7 +77,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about.html'
-    | '/careers'
+    | '/careers.html'
     | '/contact.html'
     | '/labs.html'
     | '/technologies.html'
@@ -85,7 +85,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about.html'
-    | '/careers'
+    | '/careers.html'
     | '/contact.html'
     | '/labs.html'
     | '/technologies.html'
@@ -93,7 +93,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about.html'
-    | '/careers'
+    | '/careers.html'
     | '/contact.html'
     | '/labs.html'
     | '/technologies.html'
@@ -102,7 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutDothtmlRoute: typeof AboutDothtmlRoute
-  CareersRoute: typeof CareersRoute
+  CareersDothtmlRoute: typeof CareersDothtmlRoute
   ContactDothtmlRoute: typeof ContactDothtmlRoute
   LabsDothtmlRoute: typeof LabsDothtmlRoute
   TechnologiesDothtmlRoute: typeof TechnologiesDothtmlRoute
@@ -124,11 +124,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutDothtmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/careers': {
-      id: '/careers'
-      path: '/careers'
-      fullPath: '/careers'
-      preLoaderRoute: typeof CareersRouteImport
+    '/careers.html': {
+      id: '/careers.html'
+      path: '/careers.html'
+      fullPath: '/careers.html'
+      preLoaderRoute: typeof CareersDothtmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact.html': {
@@ -158,7 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutDothtmlRoute: AboutDothtmlRoute,
-  CareersRoute: CareersRoute,
+  CareersDothtmlRoute: CareersDothtmlRoute,
   ContactDothtmlRoute: ContactDothtmlRoute,
   LabsDothtmlRoute: LabsDothtmlRoute,
   TechnologiesDothtmlRoute: TechnologiesDothtmlRoute,
