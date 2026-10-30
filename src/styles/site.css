@@ -2408,4 +2408,5 @@ footer {
 .line-reveal-ready.in .line-reveal-line { opacity: 1; transform: none; }
 .rail .card[hidden] { display: none; }
 .automation-still { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.proof b { background-image: var(--g); background-clip: text; -webkit-background-clip: text; }
 #mRight .m-card { position: relative; top: auto; opacity: 1; transform: none; filter: none; }
