@@ -10,73 +10,81 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as LabsRouteImport } from './routes/labs'
-import { Route as TechnologiesRouteImport } from './routes/technologies'
+import { Route as AboutDothtmlRouteImport } from './routes/about[.]html'
+import { Route as ContactDothtmlRouteImport } from './routes/contact[.]html'
+import { Route as LabsDothtmlRouteImport } from './routes/labs[.]html'
+import { Route as TechnologiesDothtmlRouteImport } from './routes/technologies[.]html'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const AboutDothtmlRoute = AboutDothtmlRouteImport.update({
+  id: '/about.html',
+  path: '/about.html',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const ContactDothtmlRoute = ContactDothtmlRouteImport.update({
+  id: '/contact.html',
+  path: '/contact.html',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LabsRoute = LabsRouteImport.update({
-  id: '/labs',
-  path: '/labs',
+const LabsDothtmlRoute = LabsDothtmlRouteImport.update({
+  id: '/labs.html',
+  path: '/labs.html',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TechnologiesRoute = TechnologiesRouteImport.update({
-  id: '/technologies',
-  path: '/technologies',
+const TechnologiesDothtmlRoute = TechnologiesDothtmlRouteImport.update({
+  id: '/technologies.html',
+  path: '/technologies.html',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
-  '/labs': typeof LabsRoute
-  '/technologies': typeof TechnologiesRoute
+  '/about.html': typeof AboutDothtmlRoute
+  '/contact.html': typeof ContactDothtmlRoute
+  '/labs.html': typeof LabsDothtmlRoute
+  '/technologies.html': typeof TechnologiesDothtmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
-  '/labs': typeof LabsRoute
-  '/technologies': typeof TechnologiesRoute
+  '/about.html': typeof AboutDothtmlRoute
+  '/contact.html': typeof ContactDothtmlRoute
+  '/labs.html': typeof LabsDothtmlRoute
+  '/technologies.html': typeof TechnologiesDothtmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
-  '/labs': typeof LabsRoute
-  '/technologies': typeof TechnologiesRoute
+  '/about.html': typeof AboutDothtmlRoute
+  '/contact.html': typeof ContactDothtmlRoute
+  '/labs.html': typeof LabsDothtmlRoute
+  '/technologies.html': typeof TechnologiesDothtmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/labs' | '/technologies'
+  fullPaths:
+    '/' | '/about.html' | '/contact.html' | '/labs.html' | '/technologies.html'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/labs' | '/technologies'
-  id: '__root__' | '/' | '/about' | '/contact' | '/labs' | '/technologies'
+  to:
+    '/' | '/about.html' | '/contact.html' | '/labs.html' | '/technologies.html'
+  id:
+    | '__root__'
+    | '/'
+    | '/about.html'
+    | '/contact.html'
+    | '/labs.html'
+    | '/technologies.html'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  ContactRoute: typeof ContactRoute
-  LabsRoute: typeof LabsRoute
-  TechnologiesRoute: typeof TechnologiesRoute
+  AboutDothtmlRoute: typeof AboutDothtmlRoute
+  ContactDothtmlRoute: typeof ContactDothtmlRoute
+  LabsDothtmlRoute: typeof LabsDothtmlRoute
+  TechnologiesDothtmlRoute: typeof TechnologiesDothtmlRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -88,32 +96,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/about.html': {
+      id: '/about.html'
+      path: '/about.html'
+      fullPath: '/about.html'
+      preLoaderRoute: typeof AboutDothtmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/contact.html': {
+      id: '/contact.html'
+      path: '/contact.html'
+      fullPath: '/contact.html'
+      preLoaderRoute: typeof ContactDothtmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/labs': {
-      id: '/labs'
-      path: '/labs'
-      fullPath: '/labs'
-      preLoaderRoute: typeof LabsRouteImport
+    '/labs.html': {
+      id: '/labs.html'
+      path: '/labs.html'
+      fullPath: '/labs.html'
+      preLoaderRoute: typeof LabsDothtmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/technologies': {
-      id: '/technologies'
-      path: '/technologies'
-      fullPath: '/technologies'
-      preLoaderRoute: typeof TechnologiesRouteImport
+    '/technologies.html': {
+      id: '/technologies.html'
+      path: '/technologies.html'
+      fullPath: '/technologies.html'
+      preLoaderRoute: typeof TechnologiesDothtmlRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -121,10 +129,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  ContactRoute: ContactRoute,
-  LabsRoute: LabsRoute,
-  TechnologiesRoute: TechnologiesRoute,
+  AboutDothtmlRoute: AboutDothtmlRoute,
+  ContactDothtmlRoute: ContactDothtmlRoute,
+  LabsDothtmlRoute: LabsDothtmlRoute,
+  TechnologiesDothtmlRoute: TechnologiesDothtmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

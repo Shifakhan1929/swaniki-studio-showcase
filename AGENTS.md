@@ -9,5 +9,6 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep imported homepage markup and interaction state in its TanStack route, with captured CSS and media separate, to preserve source structure during focused repairs.
+- Keep imported page markup and interaction state in each TanStack route, with captured CSS and media separate, to preserve source structure during focused repairs.
+- Use escaped dot route filenames for imported .html pages to preserve original same-site navigation paths.
 - Keep imported same-site destinations on the preview origin with original paths, queries and fragments; do not redirect unimported pages to the source site.
