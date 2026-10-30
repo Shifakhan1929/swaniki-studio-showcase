@@ -1,0 +1,523 @@
+{
+  "route": "/",
+  "source": "https://swaniki.com/",
+  "sourceObservations": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "top",
+      "scroll": 0,
+      "nav": "nav",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-top.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "labs",
+      "scroll": 929,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-labs.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "filter",
+      "scroll": 929,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-filter.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "tech",
+      "scroll": 1890,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-tech.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "band",
+      "scroll": 3594,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-band.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "method",
+      "scroll": 5863,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-method.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "stack",
+      "scroll": 6756,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-stack.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "stack-next",
+      "scroll": 6756,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-stack-next.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "contact",
+      "scroll": 7205,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-contact.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "control": "return",
+      "scroll": 0,
+      "nav": "nav",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-desktop-return.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "top",
+      "scroll": 0,
+      "nav": "nav",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-top.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "menu",
+      "scroll": 0,
+      "nav": "nav menu-open",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-menu.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "labs",
+      "scroll": 2151,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-labs.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "filter",
+      "scroll": 2129,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-filter.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "tech",
+      "scroll": 3200,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-tech.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "band",
+      "scroll": 4039,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-band.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "method",
+      "scroll": 4787,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-method.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "stack",
+      "scroll": 6771,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-stack.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "stack-next",
+      "scroll": 6771,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-stack-next.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "contact",
+      "scroll": 8031,
+      "nav": "nav collapsed",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-contact.png",
+      "status": "observed"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "control": "return",
+      "scroll": 0,
+      "nav": "nav",
+      "visible": " operate multi-tenant products \u2014 from the first prototype to the version that scales to thousands of users.\n\nProduct strategy\nFull-stack build\nScaling & ops\nExplore Swaniki Labs \u2192\n02 \u00b7 AUTOMATION\nCustom IT & Automation\n\nWe map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.\n\nWorkflow mapping\nIntegrations\nAI-assisted tooling\nStart a project \u2192\n03 \u00b7 WEB\nWebsites That Convert\n\nWe craft fast, accessible, beautifully-designed marketing sites and portfolios \u2014 engineered to perform and easy for you to update.\n\nDesign systems\nPerformance\nSEO & CMS\nExplore Swaniki Technologies \u2192\n04 \u00b7 SOCIAL\nSocial Media Management\n\nStrategic multi-channel presence and growth campaigns.\n\nInstagram & YouTube\nThreads & Meta\nGMB Growth\nLearn more \u2192\nSwaniki\n\nAn IT studio building SaaS products, custom automations and modern websites \u2014 engineered to perform, designed to last.\n\nPRODUCTS \u00b7 LABS\nFindMyTrip\nFounderSignal\nKontentOS\nVibe\nLead Intelligence\nWebsite Doctor\nWebsite Builder\nInvoicer\nAll products \u2192\nWEBSITES \u00b7 TECHNOLOGIES\nNovoExim\nExecutive Portfolio\nYash Honda\nHairport Salon\nThe Coffee Factory\nAll websites \u2192\nSTUDIO\nServices\nAbout\nCareers\nHow we work\nContact us\nLEGAL\nPrivacy Policy\nTerms of Service\nDisclaimer\nCookie Policy\n\n\u00a9 2026 Swaniki LLP \u2014 Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.\n\nBack to top \u2191\nSwaniki Labs\n\u2192\nSwaniki Technologies\n\u2192\nAbout\n\u2192\nCareers\n\u2192\nStart a project",
+      "screenshot": ".site-import/observations/source-phone-return.png",
+      "status": "observed"
+    }
+  ],
+  "previewObservations": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "top",
+      "scrollContainer": "window",
+      "scrollPosition": 0,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-top-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "hero-cta",
+      "scrollContainer": "window",
+      "scrollPosition": 1452,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-hero-cta-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "flyout",
+      "scrollContainer": "window",
+      "scrollPosition": 1452,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-flyout-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "labs",
+      "scrollContainer": "window",
+      "scrollPosition": 1602,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-labs-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "filter",
+      "scrollContainer": "window",
+      "scrollPosition": 1602,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-filter-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "labs-next",
+      "scrollContainer": "window",
+      "scrollPosition": 1602,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-labs-next-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "tech",
+      "scrollContainer": "window",
+      "scrollPosition": 1890,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-tech-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "tech-next",
+      "scrollContainer": "window",
+      "scrollPosition": 1890,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-tech-next-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "band",
+      "scrollContainer": "window",
+      "scrollPosition": 3594,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-band-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "method",
+      "scrollContainer": "window",
+      "scrollPosition": 5863,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-method-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "stack",
+      "scrollContainer": "window",
+      "scrollPosition": 6756,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-stack-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "stack-next",
+      "scrollContainer": "window",
+      "scrollPosition": 6756,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-stack-next-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "contact",
+      "scrollContainer": "window",
+      "scrollPosition": 7205,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-contact-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "bottom",
+      "scrollContainer": "window",
+      "scrollPosition": 7205,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-bottom-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "item": "return",
+      "scrollContainer": "window",
+      "scrollPosition": 0,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-desktop-return-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "top",
+      "scrollContainer": "window",
+      "scrollPosition": 0,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-top-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "hero-cta",
+      "scrollContainer": "window",
+      "scrollPosition": 1793,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-hero-cta-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "menu",
+      "scrollContainer": "window",
+      "scrollPosition": 0,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-menu-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "labs",
+      "scrollContainer": "window",
+      "scrollPosition": 2151,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-labs-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "filter",
+      "scrollContainer": "window",
+      "scrollPosition": 2129,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-filter-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "labs-next",
+      "scrollContainer": "window",
+      "scrollPosition": 1699,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-labs-next-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "tech",
+      "scrollContainer": "window",
+      "scrollPosition": 3200,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-tech-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "tech-next",
+      "scrollContainer": "window",
+      "scrollPosition": 3194,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-tech-next-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "band",
+      "scrollContainer": "window",
+      "scrollPosition": 4039,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-band-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "method",
+      "scrollContainer": "window",
+      "scrollPosition": 4787,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-method-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "stack",
+      "scrollContainer": "window",
+      "scrollPosition": 6771,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-stack-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "stack-next",
+      "scrollContainer": "window",
+      "scrollPosition": 6771,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-stack-next-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "contact",
+      "scrollContainer": "window",
+      "scrollPosition": 8031,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-contact-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "bottom",
+      "scrollContainer": "window",
+      "scrollPosition": 8212,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-bottom-verified.png"
+    },
+    {
+      "route": "/",
+      "viewport": "phone",
+      "item": "return",
+      "scrollContainer": "window",
+      "scrollPosition": 0,
+      "status": "passed",
+      "screenshot": ".site-import/observations/preview-phone-return-verified.png"
+    }
+  ],
+  "verification": {
+    "build": "passed",
+    "routingTest": "passed",
+    "desktopAndPhone": "passed for menus, filters, rails, capability navigation and all main sections",
+    "media": "all 16 product cards and 11 website cards decoded on desktop and phone",
+    "consoleErrors": "none in preview"
+  },
+  "remainingDifferences": [
+    {
+      "item": "Hero waveform canvas",
+      "status": "static fallback",
+      "reason": "Captured desktop and phone stills preserve composition; canvas motion and title scramble not reproduced."
+    },
+    {
+      "item": "Automation demonstration",
+      "status": "static fallback",
+      "reason": "Observed demo retained as a locally saved still rather than a moving interactive scene."
+    },
+    {
+      "item": "How we work process cards",
+      "status": "normal-flow placement",
+      "reason": "All four observed cards remain in source order and visible instead of overlapping pinned states."
+    },
+    {
+      "item": "Linked pages",
+      "status": "not imported",
+      "reason": "Only homepage requested; original same-site paths remain local and currently show page not found, including /contact.html, /labs.html, /technologies.html, /about.html, /careers.html and product/website detail paths."
+    }
+  ],
+  "assetMappings": [
+    {
+      "source": "https://swaniki.com/demos/open-code.html (observed viewport screenshot)",
+      "local": "/site-assets/automation-preview.png"
+    }
+  ]
+}
