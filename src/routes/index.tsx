@@ -427,11 +427,15 @@ function Index() {
       <div className="wrap max-w-[1200px]">
         <StatisticsProof />
       </div>
+      <div className="section-divider" aria-hidden="true" />
       <ImportedSection />
+      <div className="section-divider" aria-hidden="true" />
       <ImportedSectionSwanikiLabs />
+      <div className="section-divider" aria-hidden="true" />
       <ImportedSectionSwanikiTechnologies />
+      <div className="section-divider" aria-hidden="true" />
       {/* Refined Banner Section with website margins & centered composition */}
-      <section className="banner-section wrap max-w-[1200px] relative z-1 my-14 md:my-20" id="band" aria-label="Inside Swaniki Banner">
+      <section className="banner-section wrap max-w-[1200px] relative z-1 my-10 md:my-14" id="band" aria-label="Inside Swaniki Banner">
         <div className="banner-container relative w-full overflow-hidden rounded-[24px] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.65)] min-h-[460px] md:min-h-[560px] lg:min-h-[640px] aspect-[16/10] flex items-center justify-center">
           {/* Complete background image */}
           <img
@@ -458,71 +462,84 @@ function Index() {
           </div>
         </div>
       </section>
+      <div className="section-divider" aria-hidden="true" />
       <ImportedSectionAClearPathFrom />
-      <section className="stack bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#f8fafc] relative z-1" id="stack">
-        <div className="stack-head reveal justify-between max-w-[1140px] [@media(max-width:600px)]:flex-wrap [rotate:none] [scale:none]">
-          <div className="min-w-0">
-            <span className="stack-badge items-center text-site-import-primary font-[family-name:var(--mono)] text-[10px] font-medium tracking-[.12em] uppercase">What we do</span>
-            <h2 className={"\x74ext-reveal in text-site-import-primary text-[clamp(30px,4.4vw,50px)] font-extrabold tracking-[-.035em] leading-[1.02]"}><span className={"\x74ext-reveal-word"} style={{ "--word-index": "0" } as CSSProperties}>What</span> <span className={"\x74ext-reveal-word"} style={{ "--word-index": "1" } as CSSProperties}>we</span> <em className="text-site-import-primary"><span className={"\x74ext-reveal-word"} style={{ "--word-index": "2" } as CSSProperties}>build</span></em></h2>
-            <p className="text-[#475569] text-[16px] max-w-[52ch]">Four capabilities, one senior team — each delivered end to end, in house.</p>
+      <div className="section-divider" aria-hidden="true" />
+      <section className="stack relative z-1" id="stack">
+        <div className="stack-head max-w-[1140px] mx-auto px-6 mb-6 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div className="max-w-[720px]">
+            <div className="labs-pill-badge !mb-4">WHAT WE BUILD</div>
+            <h2 className="labs-heading-title text-left !m-0 !mb-3">
+              Four capabilities, <span className="labs-highlight-marker">one senior team.</span>
+            </h2>
+            <p className="labs-heading-desc text-left !m-0 !max-w-[54ch]">
+              Each delivered end to end, in house — from prototype to scale.
+            </p>
           </div>
-          <div className="stack-controls" aria-label="Capability card navigation" data-site-import-carousel-root="0">{carouselContent0}</div>
+          <div className="stack-controls self-start md:self-end" aria-label="Capability card navigation" data-site-import-carousel-root="0">{carouselContent0}</div>
         </div>
-        <div onScroll={event => { const rail = event.currentTarget; const card = rail.querySelector<HTMLElement>(".sp"); if (card) setActiveSlide0(Math.min(3, Math.round(rail.scrollLeft / (card.offsetWidth + 24)))); }} className="stack-wrap flex-row gap-[24px] max-w-[1100px] overflow-x-auto w-full [-webkit-overflow-scrolling:touch] [scroll-snap-type:x_mandatory] [scrollbar-width:none]">
-          <article className="sp bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white min-h-[520px] overflow-hidden relative z-auto [@media(max-width:820px)]:min-h-[520px]">
-            <div className="sp-inner bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white text-site-import-primary h-full overflow-hidden relative [@media(max-width:820px)]:h-full [@media(max-width:820px)]:min-h-[520px]">
-              <div className="sp-media h-[44%] top-0 right-0 bottom-auto left-0 absolute z-0" style={{ backgroundImage: "url(\"/site-assets/973b96bb3e52fe92.webp\")" }} />
-              <div className="inset-0 pointer-events-none absolute z-1" />
-              <span className="sn text-white font-[family-name:var(--mono)] text-[11px] font-semibold left-[12px] tracking-[.2em] absolute uppercase top-[12px] z-10 [backdrop-filter:blur(8px)] [text-shadow:none]">01 · SaaS</span>
-              <div className="sp-content bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white bottom-0 text-[#475569] left-0 absolute right-0 z-10">
-                <h3 className="text-site-import-primary leading-[1.08]">SaaS Products</h3>
+        <div onScroll={event => { const rail = event.currentTarget; const card = rail.querySelector<HTMLElement>(".sp"); if (card) setActiveSlide0(Math.min(3, Math.round(rail.scrollLeft / (card.offsetWidth + 20)))); }} className="stack-wrap flex-row gap-[20px] max-w-[1140px] overflow-x-auto w-full [-webkit-overflow-scrolling:touch] [scroll-snap-type:x_mandatory] [scrollbar-width:none]">
+          <article className="sp">
+            <div className="sp-inner">
+              <div className="sp-media" style={{ backgroundImage: "url(\"/site-assets/973b96bb3e52fe92.webp\")" }}>
+                <span className="sn">01 · SaaS</span>
+              </div>
+              <div className="sp-content">
+                <h3>SaaS Products</h3>
                 <p>We design, build and operate multi-tenant products — from the first prototype to the version that scales to thousands of users.</p>
-                <div className="slist flex-wrap">
-                  <span className="text-[#334155] font-semibold">Product strategy</span>
-                  <span className="text-[#334155] font-semibold">Full-stack build</span>
-                  <span className="text-[#334155] font-semibold">Scaling &amp; ops</span>
+                <div className="slist">
+                  <span>Product strategy</span>
+                  <span>Full-stack build</span>
+                  <span>Scaling &amp; ops</span>
                 </div>
-                <a className="sp-action-btn items-center gap-[8px]" href="/labs.html">Explore Swaniki Labs →</a>
+                <div className="sp-actions">
+                  <a className="sp-action-btn" href="/labs.html">Explore Swaniki Labs →</a>
+                </div>
               </div>
             </div>
           </article>
           <ImportedArticleWanderBeyondTheHorizon />
-          <article className="sp bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white min-h-[520px] overflow-hidden relative z-auto [@media(max-width:820px)]:min-h-[520px]">
-            <div className="sp-inner bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white text-site-import-primary h-full overflow-hidden relative [@media(max-width:820px)]:h-full [@media(max-width:820px)]:min-h-[520px]">
-              <div className="sp-media h-[44%] top-0 right-0 bottom-auto left-0 absolute z-0" style={{ backgroundImage: "url(\"/site-assets/d95999966bb9a159.png\")" }} />
-              <div className="inset-0 pointer-events-none absolute z-1" />
-              <span className="sn text-white font-[family-name:var(--mono)] text-[11px] font-semibold left-[12px] tracking-[.2em] absolute uppercase top-[12px] z-10 [backdrop-filter:blur(8px)] [text-shadow:none]">03 · Web</span>
-              <div className="sp-content bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white bottom-0 text-[#475569] left-0 absolute right-0 z-10">
-                <h3 className="text-site-import-primary leading-[1.08]">Websites That Convert</h3>
+          <article className="sp">
+            <div className="sp-inner">
+              <div className="sp-media" style={{ backgroundImage: "url(\"/site-assets/d95999966bb9a159.png\")" }}>
+                <span className="sn">03 · Web</span>
+              </div>
+              <div className="sp-content">
+                <h3>Websites That Convert</h3>
                 <p>We craft fast, accessible, beautifully-designed marketing sites and portfolios — engineered to perform and easy for you to update.</p>
-                <div className="slist flex-wrap">
-                  <span className="text-[#334155] font-semibold">Design systems</span>
-                  <span className="text-[#334155] font-semibold">Performance</span>
-                  <span className="text-[#334155] font-semibold">SEO &amp; CMS</span>
+                <div className="slist">
+                  <span>Design systems</span>
+                  <span>Performance</span>
+                  <span>SEO &amp; CMS</span>
                 </div>
-                <a className="sp-action-btn items-center gap-[8px]" href="/technologies.html">Explore Swaniki Technologies →</a>
+                <div className="sp-actions">
+                  <a className="sp-action-btn" href="/technologies.html">Explore Swaniki Technologies →</a>
+                </div>
               </div>
             </div>
           </article>
-          <article className="sp bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white min-h-[520px] overflow-hidden relative z-auto [@media(max-width:820px)]:min-h-[520px]">
-            <div className="sp-inner bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white text-site-import-primary h-full overflow-hidden relative [@media(max-width:820px)]:h-full [@media(max-width:820px)]:min-h-[520px]">
-              <div className="sp-media h-[44%] top-0 right-0 bottom-auto left-0 absolute z-0" style={{ backgroundImage: "url(\"/site-assets/9bb4ca992377ec9b.webp\")" }} />
-              <div className="inset-0 pointer-events-none absolute z-1" />
-              <span className="sn text-white font-[family-name:var(--mono)] text-[11px] font-semibold left-[12px] tracking-[.2em] absolute uppercase top-[12px] z-10 [backdrop-filter:blur(8px)] [text-shadow:none]">04 · Social</span>
-              <div className="sp-content bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white bottom-0 text-[#475569] left-0 absolute right-0 z-10">
-                <h3 className="text-site-import-primary leading-[1.08]">Social Media Management</h3>
+          <article className="sp">
+            <div className="sp-inner">
+              <div className="sp-media" style={{ backgroundImage: "url(\"/site-assets/9bb4ca992377ec9b.webp\")" }}>
+                <span className="sn">04 · Social</span>
+              </div>
+              <div className="sp-content">
+                <h3>Social Media Management</h3>
                 <p>Strategic multi-channel presence and growth campaigns.</p>
-                <div className="slist flex-wrap">
-                  <span className="text-[#334155] font-semibold">Instagram &amp; YouTube</span>
-                  <span className="text-[#334155] font-semibold">Threads &amp; Meta</span>
-                  <span className="text-[#334155] font-semibold">GMB Growth</span>
+                <div className="slist">
+                  <span>Instagram &amp; YouTube</span>
+                  <span>Threads &amp; Meta</span>
+                  <span>GMB Growth</span>
                 </div>
-                <a className="sp-action-btn items-center gap-[8px]" href="/about.html#services">Learn more →</a>
+                <div className="sp-actions">
+                  <a className="sp-action-btn" href="/about.html#services">Learn more →</a>
+                </div>
               </div>
             </div>
           </article>
         </div>
       </section>
+      <div className="section-divider" aria-hidden="true" />
       <ImportedFooter />
       <a className="wa-float items-center justify-center z-60" aria-label="Chat with Swaniki on WhatsApp" href="https://wa.me/917019996099?text=Hi%20Swaniki%2C%20I%27d%20like%20to%20discuss%20a%20project" rel="noopener" target="_blank">
         <svg className="fill-white relative z-1" viewBox="0 0 448 512" aria-hidden="true">
@@ -1504,11 +1521,16 @@ function ImportedSectionAClearPathFrom() {
   return (
     <section className="method wrap bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper) max-w-[1200px] relative z-2" id="method">
       <div className="m-grid items-start max-w-[1140px]">
-        <div className={"\x6d-left top-[118px]"}>
-          <div className="k text-(--indigo) font-[family-name:var(--mono)] text-[11px] tracking-[.2em] uppercase">How we work</div>
-          <h2 className={"\x74ext-reveal in text-[clamp(34px,4.6vw,58px)] font-extrabold tracking-[-.04em] leading-[1.02]"}><span className={"\x74ext-reveal-word"} style={{ "--word-index": "0" } as CSSProperties}>A</span> <span className={"\x74ext-reveal-word"} style={{ "--word-index": "1" } as CSSProperties}>clear</span> <span className={"\x74ext-reveal-word"} style={{ "--word-index": "2" } as CSSProperties}>path</span> <span className={"\x74ext-reveal-word"} style={{ "--word-index": "3" } as CSSProperties}>from</span> <em className="text-(--indigo)"><span className={"\x74ext-reveal-word"} style={{ "--word-index": "4" } as CSSProperties}>idea</span>{" "}<span className={"\x74ext-reveal-word"} style={{ "--word-index": "5" } as CSSProperties}>to</span>{" "}<span className={"\x74ext-reveal-word"} style={{ "--word-index": "6" } as CSSProperties}>impact.</span></em></h2>
-          <p className={"sub \x6cine-reveal-ready in text-(--ink-soft) text-[16.5px] leading-[1.62] max-w-[36ch]"}>
-            <span className={"\x6cine-reveal-line"} style={{ "--line-index": "0" } as CSSProperties}>Four repeatable stages take you from first conversation to a product that keeps improving long after launch.</span>
+        <div className={"m-left top-[118px]"}>
+          <div className="labs-pill-badge !mb-4">HOW WE WORK</div>
+          <h2 className="labs-heading-title text-left !m-0 !mb-4">
+            A clear path from{" "}
+            <span className="labs-highlight-marker">
+              <em className="font-[family-name:var(--display)] italic font-normal text-white">idea to impact.</em>
+            </span>
+          </h2>
+          <p className="sub text-(--ink-soft) text-[16.5px] leading-[1.62] max-w-[36ch] !mt-4">
+            Four repeatable stages take you from first conversation to a product that keeps improving long after launch.
           </p>
           <ol className={"\x6d-steps list-none"} id="mSteps">
             <li className={"\x6d-step items-center text-[15px] font-semibold gap-[14px] tracking-[-.01em]"}>
@@ -1570,22 +1592,26 @@ function ImportedSectionAClearPathFrom() {
 
 function ImportedArticleWanderBeyondTheHorizon() {
   return (
-    <article className="sp bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white min-h-[520px] overflow-hidden relative z-auto [@media(max-width:820px)]:min-h-[520px]">
-      <div className="sp-inner bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white text-site-import-primary h-full overflow-hidden relative [@media(max-width:820px)]:h-full [@media(max-width:820px)]:min-h-[520px]">
-        <div className="sp-media sp-frame h-[44%] top-0 right-0 bottom-auto left-0 absolute z-0">
+    <article className="sp">
+      <div className="sp-inner">
+        <div className="sp-media sp-frame">
           <img className="automation-still" src="/site-assets/automation-preview.png" alt="Custom automation interactive build demonstration" data-site-import-static-fallback="automation-demo" />
+          <span className="sn">02 · Automation</span>
         </div>
-        <div className="inset-0 pointer-events-none absolute z-1" />
-        <span className="sn text-white font-[family-name:var(--mono)] text-[11px] font-semibold left-[12px] tracking-[.2em] absolute uppercase top-[12px] z-10 [backdrop-filter:blur(8px)] [text-shadow:none]">02 · Automation</span>
-        <div className="sp-content bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-white bottom-0 text-[#475569] left-0 absolute right-0 z-10">
-          <h3 className="text-site-import-primary leading-[1.08]">Custom IT &amp; Automation</h3>
+        <div className="sp-content">
+          <h3>Custom IT &amp; Automation</h3>
           <p>We map manual, fragile processes and replace them with automations and internal tools that quietly run in the background.</p>
-          <div className="slist flex-wrap">
-            <span className="text-[#334155] font-semibold">Workflow mapping</span>
-            <span className="text-[#334155] font-semibold">Integrations</span>
-            <span className="text-[#334155] font-semibold">AI-assisted tooling</span>
+          <div className="slist">
+            <span>Workflow mapping</span>
+            <span>Integrations</span>
+            <span>AI-assisted tooling</span>
           </div>
-          <a className="sp-action-btn sp-action-btn--dot-morph items-center gap-[8px]" href="/contact.html"><span className="sp-action-dot" aria-hidden="true" />Start a project →</a>
+          <div className="sp-actions">
+            <a className="sp-action-btn sp-action-btn--amber sp-action-btn--dot-morph" href="/contact.html">
+              <span className="sp-action-dot" aria-hidden="true" />
+              <span>Start a project →</span>
+            </a>
+          </div>
         </div>
       </div>
     </article>
@@ -1594,24 +1620,93 @@ function ImportedArticleWanderBeyondTheHorizon() {
 
 function ImportedFooter() {
   return (
-    <footer className="relative z-1" id="contact">
+    <footer className="site-footer relative z-1" id="contact">
       <div className="wrap max-w-[1200px]">
         <div className="foot-grid">
-          <div className="foot-col foot-brand max-w-[34ch]">
-            <span className="brand" style={{ fontSize: "26px" }}>
-              <span className="mark [-webkit-text-fill-color:transparent]">Swaniki</span>
-            </span>
-            <p className="leading-[1.62]">An IT studio building SaaS products, custom automations and modern websites — engineered to perform, designed to last.</p>
-            <div className="foot-social gap-[12px]"><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="X" href="https://x.com" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M18.9 2H22l-6.9 7.9L23 22h-6.4l-5-6.1L5.9 22H2.8l7.4-8.4L1.5 2H8l4.5 5.6L18.9 2Zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20Z" /></svg></a><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="LinkedIn" href="https://linkedin.com" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M6.94 5A1.94 1.94 0 1 1 3.06 5a1.94 1.94 0 0 1 3.88 0ZM3.4 8.4h3.1V21H3.4V8.4Zm5.3 0h2.97v1.72h.04c.41-.78 1.42-1.6 2.93-1.6 3.13 0 3.71 2.06 3.71 4.74V21h-3.1v-5.56c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94V21H8.7V8.4Z" /></svg></a><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="YouTube" href="https://youtube.com" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z" /></svg></a><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="Threads" href="https://threads.net" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M12.19 2.38a9.8 9.8 0 0 0-2 .2 6.5 6.5 0 0 0-4.5 2.33A6.4 6.4 0 0 0 4.2 9.6c-.06 1.03.06 2.2.3 3.15a9.7 9.7 0 0 0 1.34 3.05 6.7 6.7 0 0 0 5.85 3.34c1.75.05 3.44-.46 5.17-1.02a11 11 0 0 0 1.86-.73 6.56 6.56 0 0 1-2.98 4.55 6.64 6.64 0 0 1-3.22.86 5.26 5.26 0 0 1-3.6-1.6.68.68 0 0 0-.42-.2.63.63 0 0 0-.46.15c-.36.27-1.07.8-1 1.5.1.85 1.6 1.92 2.72 2.31.79.27 1.51.44 2.22.55.54.08 1.1.1 1.64.08a11.6 11.6 0 0 0 3.48-.55 8.3 8.3 0 0 0 4.7-4.25 11.1 11.1 0 0 0 .96-2.31 6.2 6.2 0 0 0 .2-2.3c-.06-.52-.13-1.9-.19-2.4-.1-.68-.2-1.29-.32-1.77a9.6 9.6 0 0 0-1.3-2.88.73.73 0 0 0-.6-.35h-.27a.73.73 0 0 0-.5.19.7.7 0 0 0-.23.42c.02.33.05.66.08 1-.02 0-.02-.01-.05 0-1.35-.9-3.14-1.48-5.2-1.48Zm.05 3.68c1.56 0 2.9.5 3.96 1.41.06.05.06.14.01.2a8.8 8.8 0 0 1-.65.74c-.3.26-.36.32-.55.85a6.6 6.6 0 0 0-.33 1.7c-.03.54.02 1.17.14 1.88.07.41.1.62.13.8l.04.23c.05.26.07.4.08.52.02.2.01.6-.09.84l-.11.28c-.23.64-.78 1.4-1.36 1.88-.62.5-1.36.83-2.03.83-.7 0-1.32-.4-1.72-1.12-.3-.55-.3-1.3.04-2.2.14-.4.34-.87.58-1.4l.15-.29c.08-.15.15-.3.22-.45.43-.9.83-1.76 1.2-2.6a5.9 5.9 0 0 0 .38-1.12.62.62 0 0 0-.5-.77.6.6 0 0 0-.7.42c-.04.16-.1.54-.12.7a13.4 13.4 0 0 1-.03.72.66.66 0 0 1-.4.5.66.66 0 0 1-.62-.08 2.8 2.8 0 0 1-.38-.4l-.26-.4a.7.7 0 0 1-.08-.57.64.64 0 0 1 .34-.4c.5-.3.88-.7 1.1-1.2.12-.27.16-.6.07-.92-.1-.34-.34-.5-.72-.5Zm.02 3.4c-.42.95-.93 1.87-1.43 2.78-.22.4-.43.8-.61 1.18v.02c-.06.15-.13.34-.16.47-.11.4-.13.7-.06.92.07.23.26.48.5.65.27.2.66.3 1.14.3.55 0 1.15-.28 1.66-.7.5-.4.94-.97 1.13-1.36.12-.24.22-.7.24-1.14.01-.16-.01-.42-.04-.71a9.5 9.5 0 0 0-.12-.7l-.05-.2c-.03-.12-.1-.36-.22-.56l-.13-.23c-.23-.4-.56-.76-.88-1.16-.04.02 0 0-.01 0q0 0-.01 0Z" /></svg></a><a className="items-center justify-center leading-[1.42] w-[38px]" aria-label="Instagram" href="https://instagram.com" rel="noopener" target="_blank"><svg className="fill-current h-[17px] w-[17px]" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38a3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05 0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.76.72 1.4 1.38 2.06a5.9 5.9 0 0 0 2.06 1.38c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.06-1.38 5.9 5.9 0 0 0 1.38-2.06c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.06A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84Zm0 10.15a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z" /></svg></a></div>
+          {/* Brand Column */}
+          <div className="foot-col foot-brand">
+            <div className="foot-brand-header">
+              <div className="foot-logo-box">
+                <img
+                  src="/site-assets/acbe9434c0d28eff.png"
+                  alt="Swaniki Mark"
+                  width="22"
+                  height="22"
+                />
+              </div>
+              <span className="foot-brand-title">Swaniki</span>
+            </div>
+            <p className="foot-brand-desc">
+              A Bengaluru studio that builds and sells AI and general-purpose software, with interns doing a lot of the building.
+            </p>
+            <p className="foot-tagline">
+              Built by interns. Shipped for real.
+            </p>
+            <div className="foot-social gap-[10px]">
+              <a aria-label="X" href="https://x.com" rel="noopener" target="_blank">
+                <svg className="fill-current h-[15px] w-[15px]" viewBox="0 0 24 24"><path d="M18.9 2H22l-6.9 7.9L23 22h-6.4l-5-6.1L5.9 22H2.8l7.4-8.4L1.5 2H8l4.5 5.6L18.9 2Zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20Z" /></svg>
+              </a>
+              <a aria-label="LinkedIn" href="https://linkedin.com" rel="noopener" target="_blank">
+                <svg className="fill-current h-[15px] w-[15px]" viewBox="0 0 24 24"><path d="M6.94 5A1.94 1.94 0 1 1 3.06 5a1.94 1.94 0 0 1 3.88 0ZM3.4 8.4h3.1V21H3.4V8.4Zm5.3 0h2.97v1.72h.04c.41-.78 1.42-1.6 2.93-1.6 3.13 0 3.71 2.06 3.71 4.74V21h-3.1v-5.56c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94V21H8.7V8.4Z" /></svg>
+              </a>
+              <a aria-label="YouTube" href="https://youtube.com" rel="noopener" target="_blank">
+                <svg className="fill-current h-[15px] w-[15px]" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z" /></svg>
+              </a>
+              <a aria-label="Threads" href="https://threads.net" rel="noopener" target="_blank">
+                <svg className="fill-current h-[15px] w-[15px]" viewBox="0 0 24 24"><path d="M12.19 2.38a9.8 9.8 0 0 0-2 .2 6.5 6.5 0 0 0-4.5 2.33A6.4 6.4 0 0 0 4.2 9.6c-.06 1.03.06 2.2.3 3.15a9.7 9.7 0 0 0 1.34 3.05 6.7 6.7 0 0 0 5.85 3.34c1.75.05 3.44-.46 5.17-1.02a11 11 0 0 0 1.86-.73 6.56 6.56 0 0 1-2.98 4.55 6.64 6.64 0 0 1-3.22.86 5.26 5.26 0 0 1-3.6-1.6.68.68 0 0 0-.42-.2.63.63 0 0 0-.46.15c-.36.27-1.07.8-1 1.5.1.85 1.6 1.92 2.72 2.31.79.27 1.51.44 2.22.55.54.08 1.1.1 1.64.08a11.6 11.6 0 0 0 3.48-.55 8.3 8.3 0 0 0 4.7-4.25 11.1 11.1 0 0 0 .96-2.31 6.2 6.2 0 0 0 .2-2.3c-.06-.52-.13-1.9-.19-2.4-.1-.68-.2-1.29-.32-1.77a9.6 9.6 0 0 0-1.3-2.88.73.73 0 0 0-.6-.35h-.27a.73.73 0 0 0-.5.19.7.7 0 0 0-.23.42c.02.33.05.66.08 1-.02 0-.02-.01-.05 0-1.35-.9-3.14-1.48-5.2-1.48Zm.05 3.68c1.56 0 2.9.5 3.96 1.41.06.05.06.14.01.2a8.8 8.8 0 0 1-.65.74c-.3.26-.36.32-.55.85a6.6 6.6 0 0 0-.33 1.7c-.03.54.02 1.17.14 1.88.07.41.1.62.13.8l.04.23c.05.26.07.4.08.52.02.2.01.6-.09.84l-.11.28c-.23.64-.78 1.4-1.36 1.88-.62.5-1.36.83-2.03.83-.7 0-1.32-.4-1.72-1.12-.3-.55-.3-1.3.04-2.2.14-.4.34-.87.58-1.4l.15-.29c.08-.15.15-.3.22-.45.43-.9.83-1.76 1.2-2.6a5.9 5.9 0 0 0 .38-1.12.62.62 0 0 0-.5-.77.6.6 0 0 0-.7.42c-.04.16-.1.54-.12.7a13.4 13.4 0 0 1-.03.72.66.66 0 0 1-.4.5.66.66 0 0 1-.62-.08 2.8 2.8 0 0 1-.38-.4l-.26-.4a.7.7 0 0 1-.08-.57.64.64 0 0 1 .34-.4c.5-.3.88-.7 1.1-1.2.12-.27.16-.6.07-.92-.1-.34-.34-.5-.72-.5Zm.02 3.4c-.42.95-.93 1.87-1.43 2.78-.22.4-.43.8-.61 1.18v.02c-.06.15-.13.34-.16.47-.11.4-.13.7-.06.92.07.23.26.48.5.65.27.2.66.3 1.14.3.55 0 1.15-.28 1.66-.7.5-.4.94-.97 1.13-1.36.12-.24.22-.7.24-1.14.01-.16-.01-.42-.04-.71a9.5 9.5 0 0 0-.12-.7l-.05-.2c-.03-.12-.1-.36-.22-.56l-.13-.23c-.23-.4-.56-.76-.88-1.16-.04.02 0 0-.01 0q0 0-.01 0Z" /></svg>
+              </a>
+              <a aria-label="Instagram" href="https://instagram.com" rel="noopener" target="_blank">
+                <svg className="fill-current h-[15px] w-[15px]" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38a3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05 0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.76.72 1.4 1.38 2.06a5.9 5.9 0 0 0 2.06 1.38c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.06-1.38 5.9 5.9 0 0 0 1.38-2.06c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.06A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84Zm0 10.15a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z" /></svg>
+              </a>
+            </div>
           </div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Products · Labs</h4><a className="leading-[1.42]" href="/labs/findmytrip.html">FindMyTrip</a><a className="leading-[1.42]" href="/labs/foundersignal.html">FounderSignal</a><a className="leading-[1.42]" href="/labs/kontentos.html">KontentOS</a><a className="leading-[1.42]" href="/labs/vibe.html">Vibe</a><a className="leading-[1.42]" href="/labs/lead-intelligence.html">Lead Intelligence</a><a className="leading-[1.42]" href="/labs/website-doctor-v2.html">Website Doctor</a><a className="leading-[1.42]" href="/labs/website-builder.html">Website Builder</a><a className="leading-[1.42]" href="/labs/invoicer.html">Invoicer</a><a className="leading-[1.42]" href="/labs.html">All products →</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Websites · Technologies</h4><a className="leading-[1.42]" href="/websites/novoexim.html">NovoExim</a><a className="leading-[1.42]" href="/websites/executive-portfolio.html">Executive Portfolio</a><a className="leading-[1.42]" href="/websites/yash-honda.html">Yash Honda</a><a className="leading-[1.42]" href="/websites/hairport.html">Hairport Salon</a><a className="leading-[1.42]" href="/websites/coffee-factory.html">The Coffee Factory</a><a className="leading-[1.42]" href="/technologies.html">All websites →</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Studio</h4><a className="leading-[1.42]" href="/about.html#services">Services</a><a className="leading-[1.42]" href="/about.html#about">About</a><a className="leading-[1.42]" href="/careers.html">Careers</a><a className="leading-[1.42]" href="/#method">How we work</a><a className="leading-[1.42]" href="/contact.html">Contact us</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[.18em] uppercase">Legal</h4><a className="leading-[1.42]" href="/contact.html">Privacy Policy</a><a className="leading-[1.42]" href="/contact.html">Terms of Service</a><a className="leading-[1.42]" href="/contact.html">Disclaimer</a><a className="leading-[1.42]" href="/contact.html">Cookie Policy</a></div>
+
+          {/* Reach Us Column */}
+          <div className="foot-col">
+            <h4 className="foot-col-title">REACH US</h4>
+            <div className="foot-reach-list">
+              <a className="foot-reach-item" href="mailto:contactus@swaniki.com">
+                <svg className="foot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                <span>contactus@swaniki.com</span>
+              </a>
+              <div className="foot-reach-item">
+                <svg className="foot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Bengaluru, Karnataka, India</span>
+              </div>
+              <a className="foot-reach-item" href="https://wa.me/917019996099?text=Hi%20Swaniki%2C%20I%27d%20like%20to%20discuss%20a%20project" rel="noopener" target="_blank">
+                <svg className="foot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <span>+91 70199 96099</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Company Column */}
+          <div className="foot-col">
+            <h4 className="foot-col-title">COMPANY</h4>
+            <div className="foot-links-list">
+              <a href="/contact.html">Contact us</a>
+              <a href="/labs.html">Swaniki Labs</a>
+              <a href="/technologies.html">Swaniki Technologies</a>
+              <a href="/about.html#about">About Studio</a>
+              <a href="/careers.html">Careers</a>
+              <a href="/contact.html">Privacy policy</a>
+              <a href="/contact.html">Terms &amp; conditions</a>
+            </div>
+          </div>
         </div>
-        <div className="foot-legal items-center text-(--ink-soft) flex-wrap text-[12.5px] gap-[16px] justify-between">
-          <p>© 2026 <b className="[color:var(--ink)]">Swaniki LLP</b> — Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.</p>
-          <a className={"\x74o-top items-center gap-[8px]"} href="#top">Back to top ↑</a>
+
+        {/* Legal Bar */}
+        <div className="foot-legal">
+          <p>© 2026 Swaniki Studio. Est. 2026. All rights reserved.</p>
+          <a className="to-top" href="#top">Back to top ↑</a>
         </div>
       </div>
     </footer>
