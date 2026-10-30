@@ -85,19 +85,19 @@ function Index() {
         <div className="proof reveal flex-wrap gap-0 isolate justify-center overflow-hidden relative [rotate:none] [scale:none]" style={{ translate: "none", opacity: "0.9906", transform: "translate(0px, 0px)" } as CSSProperties}>
           <div className="ambient-glow [background:radial-gradient(circle,rgba(99,102,241,.15)_0%,rgba(168,85,247,.08)_45%,transparent_70%)] h-[600px] left-1/2 pointer-events-none absolute top-1/2 w-[600px] z-0" aria-hidden="true" />
           <div className="relative text-center z-1">
-            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">15+</b>
+            <b className="[background-image:var(--g)] [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">15+</b>
             <span className="text-(--ink-soft) text-[13px] font-medium">Products</span>
           </div>
           <div className="relative text-center z-1">
-            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">20+</b>
+            <b className="[background-image:var(--g)] [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">20+</b>
             <span className="text-(--ink-soft) text-[13px] font-medium">Websites</span>
           </div>
           <div className="relative text-center z-1">
-            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">3</b>
+            <b className="[background-image:var(--g)] [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">3</b>
             <span className="text-(--ink-soft) text-[13px] font-medium">Core capabilities</span>
           </div>
           <div className="relative text-center z-1">
-            <b className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">100%</b>
+            <b className="[background-image:var(--g)] [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] [background-image:var(--g)] bg-clip-text! text-[34px] tracking-[-.03em] [-webkit-text-fill-color:transparent]">100%</b>
             <span className="text-(--ink-soft) text-[13px] font-medium">In-house build</span>
           </div>
         </div>
