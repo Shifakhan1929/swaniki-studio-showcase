@@ -1,39 +1,57 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/pages/labs.css?raw";
 
-export const Route = createFileRoute("/labs")({
-  head: () => ({ meta: [{ title: "Swaniki Labs | SaaS Products \u0026 AI Tools" }] }),
+export const Route = createFileRoute("/labs.html")({
+  head: () => ({ meta: [
+    { title: "Swaniki Labs | SaaS Products & AI Tools" },
+    { name: "description", content: "Explore Swaniki Labs software products, AI tools, and product previews." },
+    { property: "og:title", content: "Swaniki Labs | SaaS Products & AI Tools" },
+    { property: "og:description", content: "Explore Swaniki Labs software products, AI tools, and product previews." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   staticData: { importedDocument: { html: { "className": "lenis", "lang": "en" }, body: { "id": "top" } } },
   component: Index,
 });
 
 function Index() {
   useImportedLayout();
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        document.querySelector<HTMLButtonElement>(".nav-toggle")?.focus();
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
   return (
     <>
       <style>{capturedCSS}</style>
       <div className="bg pointer-events-none z-0" />
       <div className="inset-0 pointer-events-none fixed z-0 [background-image:linear-gradient(rgba(11,14,23,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(11,14,23,0.04)_1px,transparent_1px)] [background-size:66px_66px] [mask:radial-gradient(circle_at_50%_16%,rgb(0,0,0),transparent_80%)]" />
       <div className="grain inset-0 mix-blend-multiply opacity-[0.045] pointer-events-none fixed z-5" />
-      <nav className="nav" id="nav" data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"collapsed\"],\"removed\":[],\"threshold\":648},\"mobile\":{\"added\":[\"collapsed\"],\"removed\":[],\"threshold\":633}}"}>
-        <a className="nav-home" style={{ textDecoration: "none" }} aria-label="Swaniki Home" href="/indexhtml-213456c5dc963e03">
+      <nav className={`nav${menuOpen ? " menu-open" : ""}`} id="nav" data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"collapsed\"],\"removed\":[],\"threshold\":648},\"mobile\":{\"added\":[\"collapsed\"],\"removed\":[],\"threshold\":633}}"}>
+        <a className="nav-home" style={{ textDecoration: "none" }} aria-label="Swaniki Home" href="/">
           <span className="brand">
             <img className="brand-mark" src="/site-assets/acbe9434c0d28eff.png" alt="Swaniki Mark" width="30" height="30" />
             <img className="brand-text" src="/site-assets/4042d99102476dbf.png" alt="Swaniki" width="85" height="19" />
           </span>
         </a>
-        <div className="nav-links"><a className="active" href="/labshtml-ffe9d364ec6cac35">Swaniki Labs</a><a href="/technologieshtml-1df41b6d05675be9">Swaniki <span className="qual">Technologies</span></a><a href="/abouthtml-db5b16407156eab2#about">About</a><a href="/careershtml-263d6d2aa1009c5e">Careers</a></div>
-        <a className="nav-cta" href="/contacthtml-030e61461fb49a1a">Start a project</a>
+        <div className="nav-links"><a className="active" href="/labs.html">Swaniki Labs</a><a href="/technologies.html">Swaniki <span className="qual">Technologies</span></a><a href="/about.html#about">About</a><a href="/careers.html">Careers</a></div>
+        <a className="nav-cta" href="/contact.html">Start a project</a>
         <div className="nav-flyout" id="navFlyout" role="region" aria-label="Quick navigation">
-          <a className="nav-flyout-link" href="/indexhtml-213456c5dc963e03">Home</a>
-          <a className="nav-flyout-link" href="/labshtml-ffe9d364ec6cac35">Products</a>
-          <a className="nav-flyout-link" href="/indexhtml-213456c5dc963e03#stack">What we build</a>
-          <a className="nav-flyout-link" href="/technologieshtml-1df41b6d05675be9">Websites &amp; Technologies</a>
-          <a className="nav-flyout-link" href="/abouthtml-db5b16407156eab2#services">About &amp; Capabilities</a>
-          <a className="nav-flyout-link nav-flyout-cta" href="/contacthtml-030e61461fb49a1a">Start a Project</a>
+          <a className="nav-flyout-link" href="/">Home</a>
+          <a className="nav-flyout-link" href="/labs.html">Products</a>
+          <a className="nav-flyout-link" href="/#stack">What we build</a>
+          <a className="nav-flyout-link" href="/technologies.html">Websites &amp; Technologies</a>
+          <a className="nav-flyout-link" href="/about.html#services">About &amp; Capabilities</a>
+          <a className="nav-flyout-link nav-flyout-cta" href="/contact.html">Start a Project</a>
         </div>
-        <button className="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <button className="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} aria-controls="navDrawer" onClick={() => setMenuOpen(open => !open)}>
           <span />
           <span />
           <span />
@@ -47,13 +65,13 @@ function Index() {
           <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.7 111L0 480l117.7-30.9c32.4 17.7 68.3 27 105.5 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 5.6-3.7 8.4-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.1-3.2-5.5.8-8.5 2.5-11.2 2.5-3.6 5.6-6.9 8.4-10.4 2.8-3.5 3.7-6 5.6-9.3 1.9-3.2 1-6.1-.4-8.6-1.4-2.4-12.5-30-17.1-41.1-4.5-10.9-9.1-9.4-12.5-9.6-3.4-.2-7.3-.2-11.2-.2-3.9 0-10.2 1.4-15.5 7-5.3 5.6-20.3 19.8-20.3 48.3 0 28.5 20.8 56 23.8 59.9 3 3.9 41 62.7 99.2 88 13.9 6 24.7 9.6 33.1 12.3 13.9 4.4 26.5 3.8 36.5 2.3 11.1-1.7 34.3-14 39.2-27.5 4.9-13.5 4.9-25 3.4-27.5-1.4-2.5-5.2-3.9-10.7-6.7z" />
         </svg>
       </a>
-      <div className="nav-drawer bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#fffffff2] rounded-[24px] [box-shadow:var(--soft-lg)] flex flex-col gap-[8px] left-[16px] opacity-0 pointer-events-none fixed right-[16px] top-[72px] [transform:translateY(-10px)] z-49 [backdrop-filter:blur(24px)] [border:1px_solid_var(--line)]" id="navDrawer">
-        <a className="items-center flex text-[15px] font-semibold justify-between no-underline" href="/indexhtml-213456c5dc963e03"><span>Home</span>{" "}<span>→</span></a>
-        <a className="active items-center flex text-[15px] font-semibold justify-between no-underline" href="/labshtml-ffe9d364ec6cac35"><span>Swaniki Labs</span>{" "}<span>→</span></a>
-        <a className="items-center flex text-[15px] font-semibold justify-between no-underline" href="/technologieshtml-1df41b6d05675be9"><span>Swaniki Technologies</span>{" "}<span>→</span></a>
-        <a className="items-center flex text-[15px] font-semibold justify-between no-underline" href="/abouthtml-db5b16407156eab2#about"><span>About</span>{" "}<span>→</span></a>
-        <a className="items-center flex text-[15px] font-semibold justify-between no-underline" href="/careershtml-263d6d2aa1009c5e"><span>Careers</span>{" "}<span>→</span></a>
-        <a className="nav-drawer-cta items-center flex text-[15px] font-semibold justify-center no-underline" href="/contacthtml-030e61461fb49a1a">Start a project</a>
+      <div aria-hidden={!menuOpen} inert={!menuOpen} className={(menuOpen ? "nav-drawer is-open " : "nav-drawer ") + "bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#fffffff2] rounded-[24px] [box-shadow:var(--soft-lg)] flex flex-col gap-[8px] left-[16px] opacity-0 pointer-events-none fixed right-[16px] top-[72px] [transform:translateY(-10px)] z-49 [backdrop-filter:blur(24px)] [border:1px_solid_var(--line)]"} id="navDrawer" onClick={() => setMenuOpen(false)}>
+        <a className="items-center flex text-[15px] font-semibold justify-between no-underline" href="/"><span>Home</span>{" "}<span>→</span></a>
+        <a className="active items-center flex text-[15px] font-semibold justify-between no-underline" href="/labs.html"><span>Swaniki Labs</span>{" "}<span>→</span></a>
+        <a className="items-center flex text-[15px] font-semibold justify-between no-underline" href="/technologies.html"><span>Swaniki Technologies</span>{" "}<span>→</span></a>
+        <a className="items-center flex text-[15px] font-semibold justify-between no-underline" href="/about.html#about"><span>About</span>{" "}<span>→</span></a>
+        <a className="items-center flex text-[15px] font-semibold justify-between no-underline" href="/careers.html"><span>Careers</span>{" "}<span>→</span></a>
+        <a className="nav-drawer-cta items-center flex text-[15px] font-semibold justify-center no-underline" href="/contact.html">Start a project</a>
       </div>
     </>
   );
@@ -65,13 +83,13 @@ function ImportedHeaderWhereAChallengeBecomes() {
       <div className="[background:radial-gradient(circle,rgba(99,102,241,0.15)_0%,rgba(168,85,247,0.08)_45%,transparent_70%)] rounded-[50%] h-[600px] left-1/2 pointer-events-none absolute top-[22%] [transform:translate(-50%,-50%)] w-[600px] z-0 [filter:blur(90px)]" aria-hidden="true" />
       <div className="wrap max-w-[1180px] relative z-1">
         <div className="breadcrumb reveal in items-center text-(--ink-soft) flex font-[family-name:var(--mono)] text-[11px] gap-[10px] tracking-[0.14em] uppercase">
-          <a className="no-underline" href="/indexhtml-213456c5dc963e03">Home</a>
+          <a className="no-underline" href="/">Home</a>
           <span className="text-(--indigo) font-semibold opacity-75">/</span>
           <b className="text-(--ink) font-bold">Swaniki Labs</b>
         </div>
         <h1 className="reveal in font-extrabold tracking-[-0.04em]" style={{ transitionDelay: "0.05s" }}>Where a challenge becomes a <em className="text-(--indigo) font-[family-name:var(--display)] italic font-normal">product.</em></h1>
         <p className="lede reveal in text-(--ink-soft)" style={{ transitionDelay: "0.1s" }}>Every Labs product started as a problem worth solving. Read each one’s story — the <b className="[color:var(--ink)]">need</b> behind it, the <b className="[color:var(--ink)]">gap</b> it fills and the <b className="[color:var(--ink)]">benefit</b> it delivers — then try the live build.</p>
-        <div className="meta reveal in flex flex-wrap gap-[10px]" style={{ transitionDelay: "0.15s" }} id="filterPills"><button className="pill active items-center bg-none! [background-position:0%_0%]! [background-size:auto_auto]! [background-repeat:repeat]! [background-origin:padding-box]! [background-clip:border-box]! [background-attachment:scroll]! bg-(--ink)! text-white! inline-flex text-[12.5px] font-semibold gap-[7px]">All (17)</button><button className="pill live items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#0fb5a31a] text-[#0b7a4b] inline-flex text-[12.5px] font-semibold gap-[7px]"><i className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--teal) rounded-[50%] h-[7px] w-[7px]" />11 Live</button><button className="pill dev items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#f0b42924] text-[#8a5b08] inline-flex text-[12.5px] font-semibold gap-[7px]"><i className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#f0b429] rounded-[50%] h-[7px] w-[7px]" />4 In dev</button><button className="pill ext items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#5b53e61f] text-[#4b3fb0] inline-flex text-[12.5px] font-semibold gap-[7px]"><i className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--indigo) rounded-[50%] h-[7px] w-[7px]" />1 Extension</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">AI &amp; Research</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Productivity</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Web Tools</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Finance</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Community</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Consumer Tech</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Travel Intelligence</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Procurement</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Automation</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Marketing</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Careers</button></div>
+        <div className="meta reveal in flex flex-wrap gap-[10px]" style={{ transitionDelay: "0.15s" }} id="filterPills"><button className="pill active items-center bg-none [background-position:0%_0%]! [background-size:auto_auto]! [background-repeat:repeat]! [background-origin:padding-box]! [background-clip:border-box]! [background-attachment:scroll]! bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">All (17)</button><button className="pill live items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#0fb5a31a] text-[#0b7a4b] inline-flex text-[12.5px] font-semibold gap-[7px]"><i className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--teal) rounded-[50%] h-[7px] w-[7px]" />11 Live</button><button className="pill dev items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#f0b42924] text-[#8a5b08] inline-flex text-[12.5px] font-semibold gap-[7px]"><i className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#f0b429] rounded-[50%] h-[7px] w-[7px]" />4 In dev</button><button className="pill ext items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-[#5b53e61f] text-[#4b3fb0] inline-flex text-[12.5px] font-semibold gap-[7px]"><i className="bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--indigo) rounded-[50%] h-[7px] w-[7px]" />1 Extension</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">AI &amp; Research</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Productivity</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Web Tools</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Finance</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Community</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Consumer Tech</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Travel Intelligence</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Procurement</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Automation</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Marketing</button><button className="pill items-center bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-(--paper-2) text-(--ink) inline-flex text-[12.5px] font-semibold gap-[7px]">Careers</button></div>
       </div>
     </header>
   );
@@ -81,7 +99,7 @@ function ImportedSection() {
   return (
     <section className="sec relative z-1">
       <div className={"\x67rid [&]:grid gap-[26px] max-w-[1180px] relative z-1"} id="grid">
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/findmytriphtml-79fda8f303a2e4ba">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/findmytrip.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/2fe4fa259043598d.webp" alt="FindMyTrip — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -95,7 +113,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.05s" }} href="/labs/foundersignalhtml-4f9a0e5189d421ad">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.05s" }} href="/labs/foundersignal.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/973b96bb3e52fe92.webp" alt="FounderSignal — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -109,7 +127,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.1s" }} href="/labs/kontentoshtml-c0a2825079506ad9">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.1s" }} href="/labs/kontentos.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/ae7317fcd9da9f39.webp" alt="KontentOS — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -123,7 +141,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.15s" }} href="/labs/vibehtml-50fc6648ceef8cb9">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.15s" }} href="/labs/vibe.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/a3f06b539cc017e4.webp" alt="Vibe — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -137,7 +155,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/lead-intelligencehtml-60cdb3d18b944155">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/lead-intelligence.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/39c8a24a9ea37cc2.webp" alt="Lead Intelligence — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -151,7 +169,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.05s" }} href="/labs/website-doctor-v2html-2f5331659df0a692">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.05s" }} href="/labs/website-doctor-v2.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/f676962b740f0713.webp" alt="Website Doctor — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -165,7 +183,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.1s" }} href="/labs/website-builderhtml-12cea195304e667d">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.1s" }} href="/labs/website-builder.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/a4148b63d160ca18.webp" alt="Website Builder — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -179,7 +197,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.15s" }} href="/labs/event-aggregatorhtml-b4a21ec2e01d9287">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.15s" }} href="/labs/event-aggregator.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/056808f7059c8717.webp" alt="Event Aggregator — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -193,7 +211,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/swatrackhtml-43ea34c58c7c9142">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/swatrack.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/4b0d2808fff139e0.webp" alt="SwaTrack — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -207,7 +225,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.05s" }} href="/labs/invoicerhtml-7402e616e1dda3ad">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.05s" }} href="/labs/invoicer.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/73d1068c8fd82f03.webp" alt="Invoicer — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -221,7 +239,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.1s" }} href="/labs/myhrhtml-14be143af204d49e">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.1s" }} href="/labs/myhr.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/2bd54ca5497fc0b0.webp" alt="myHR by Swaniki — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -235,7 +253,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.15s" }} href="/labs/rfqclubhtml-42ceb9680f48d04a">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.15s" }} href="/labs/rfqclub.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/927730c5a45e30a5.webp" alt="RFQClub by Swaniki — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -249,7 +267,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/tap-togglehtml-e4dd3843e7b804ef">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/tap-toggle.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/2c64215beb9b50cd.webp" alt={"Tap & Toggle — product screenshot"} loading="lazy" decoding="async" />
           </div>
@@ -263,7 +281,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.05s" }} href="/labs/gmbhtml-41f6571dd7dbb9bd">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0.05s" }} href="/labs/gmb.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/f84eee08a2c51b55.webp" alt="GMB by Swaniki — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -305,7 +323,7 @@ function ImportedSection() {
             <span className="more items-center inline-flex text-[13px] font-bold gap-[6px]">Explore product <span className="arw">→</span></span>
           </div>
         </a>
-        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/swapikihtml-83ec082f772f4833">
+        <a className="card reveal in bg-none [background-position:0%_0%] [background-size:auto_auto] [background-repeat:repeat] [background-origin:padding-box] [background-clip:border-box] [background-attachment:scroll] bg-site-import-foreground flex flex-col h-auto min-h-0 overflow-hidden relative no-underline" style={{ transitionDelay: "0s" }} href="/labs/swapiki.html">
           <div className="thumb aspect-auto flex-none h-auto overflow-hidden w-full">
             <img src="/site-assets/d37fd7e761ee456a.webp" alt="Swapiki — product screenshot" loading="lazy" decoding="async" />
           </div>
@@ -330,15 +348,15 @@ function ImportedFooter() {
       <div className="wrap max-w-[1180px]">
         <div className={"foot-grid [&]:grid"}>
           <div className="foot-col foot-brand max-w-[34ch]">
-            <a className={"brand [&]:block font-medium leading-[1.42]"} style={{ fontSize: "26px" }} href="/indexhtml-213456c5dc963e03">
-              <span className="bg-clip-text [-webkit-text-fill-color:transparent]">Swaniki</span>
+            <a className={"brand [&]:block font-medium leading-[1.42]"} style={{ fontSize: "26px" }} href="/">
+              <span className="footer-wordmark">Swaniki</span>
             </a>
             <p className={"[&]:block font-medium leading-[1.62]"}>An IT studio building SaaS products, custom automations and modern websites — engineered to perform, designed to last.</p>
           </div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[0.18em] opacity-50 uppercase">Products · Labs</h4><a className={"[&]:block font-medium leading-[1.42]"} href="/labshtml-ffe9d364ec6cac35">All Labs products</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/findmytriphtml-79fda8f303a2e4ba">FindMyTrip</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/foundersignalhtml-4f9a0e5189d421ad">FounderSignal</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/kontentoshtml-c0a2825079506ad9">KontentOS</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/vibehtml-50fc6648ceef8cb9">Vibe</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/swatrackhtml-43ea34c58c7c9142">SwaTrack</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/invoicerhtml-7402e616e1dda3ad">Invoicer</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[0.18em] opacity-50 uppercase">Websites · Technologies</h4><a className={"[&]:block font-medium leading-[1.42]"} href="/technologieshtml-1df41b6d05675be9">All client websites</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/novoeximhtml-fb54a1e2a17a040d">NovoExim</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/executive-portfoliohtml-749ba432870049d3">Executive Portfolio</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/yash-hondahtml-196b09df0c178351">Yash Honda</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/hairporthtml-7390de30c088c040">Hairport Salon</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/coffee-factoryhtml-dbaf61cfaeccfe23">The Coffee Factory</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[0.18em] opacity-50 uppercase">Studio</h4><a className={"[&]:block font-medium leading-[1.42]"} href="/abouthtml-db5b16407156eab2#services">Services</a><a className={"[&]:block font-medium leading-[1.42]"} href="/abouthtml-db5b16407156eab2#about">About</a><a className={"[&]:block font-medium leading-[1.42]"} href="/careershtml-263d6d2aa1009c5e">Careers</a><a className={"[&]:block font-medium leading-[1.42]"} href="/indexhtml-213456c5dc963e03#method">How we work</a><a className={"[&]:block font-medium leading-[1.42]"} href="/contacthtml-030e61461fb49a1a">Contact us</a></div>
-          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[0.18em] opacity-50 uppercase">Legal</h4><a className={"[&]:block font-medium leading-[1.42]"} href="/contacthtml-030e61461fb49a1a">Privacy Policy</a><a className={"[&]:block font-medium leading-[1.42]"} href="/contacthtml-030e61461fb49a1a">Terms of Service</a><a className={"[&]:block font-medium leading-[1.42]"} href="/contacthtml-030e61461fb49a1a">Disclaimer</a><a className={"[&]:block font-medium leading-[1.42]"} href="/contacthtml-030e61461fb49a1a">Cookie Policy</a></div>
+          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[0.18em] opacity-50 uppercase">Products · Labs</h4><a className={"[&]:block font-medium leading-[1.42]"} href="/labs.html">All Labs products</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/findmytrip.html">FindMyTrip</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/foundersignal.html">FounderSignal</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/kontentos.html">KontentOS</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/vibe.html">Vibe</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/swatrack.html">SwaTrack</a><a className={"[&]:block font-medium leading-[1.42]"} href="/labs/invoicer.html">Invoicer</a></div>
+          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[0.18em] opacity-50 uppercase">Websites · Technologies</h4><a className={"[&]:block font-medium leading-[1.42]"} href="/technologies.html">All client websites</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/novoexim.html">NovoExim</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/executive-portfolio.html">Executive Portfolio</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/yash-honda.html">Yash Honda</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/hairport.html">Hairport Salon</a><a className={"[&]:block font-medium leading-[1.42]"} href="/websites/coffee-factory.html">The Coffee Factory</a></div>
+          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[0.18em] opacity-50 uppercase">Studio</h4><a className={"[&]:block font-medium leading-[1.42]"} href="/about.html#services">Services</a><a className={"[&]:block font-medium leading-[1.42]"} href="/about.html#about">About</a><a className={"[&]:block font-medium leading-[1.42]"} href="/careers.html">Careers</a><a className={"[&]:block font-medium leading-[1.42]"} href="/#method">How we work</a><a className={"[&]:block font-medium leading-[1.42]"} href="/contact.html">Contact us</a></div>
+          <div className="foot-col"><h4 className="text-(--ink) font-[family-name:var(--mono)] text-[10.5px] tracking-[0.18em] opacity-50 uppercase">Legal</h4><a className={"[&]:block font-medium leading-[1.42]"} href="/contact.html">Privacy Policy</a><a className={"[&]:block font-medium leading-[1.42]"} href="/contact.html">Terms of Service</a><a className={"[&]:block font-medium leading-[1.42]"} href="/contact.html">Disclaimer</a><a className={"[&]:block font-medium leading-[1.42]"} href="/contact.html">Cookie Policy</a></div>
         </div>
         <div className="foot-legal items-center text-(--ink-soft) flex flex-wrap text-[12.5px] gap-[16px] justify-between [border-top:1px_solid_var(--line)]">
           <p>© 2026 <b className="[color:var(--ink)]">Swaniki LLP</b> — Swaniki, Swaniki Technologies and Swaniki Labs are operating brand names of Swaniki LLP. All rights reserved.</p>
@@ -352,6 +370,29 @@ function ImportedFooter() {
 
 function useImportedLayout() {
   useEffect(() => {
+    const pills = document.getElementById("filterPills");
+    const buttons = Array.from(pills?.querySelectorAll<HTMLButtonElement>("button") ?? []);
+    buttons.forEach(button => button.setAttribute("aria-pressed", String(button.classList.contains("active"))));
+    const filter = (event: Event) => {
+      if (!(event.target instanceof Element)) return;
+      const selected = event.target.closest("button");
+      if (!selected || !pills?.contains(selected)) return;
+      const value = selected.textContent?.trim() ?? "";
+      buttons.forEach(button => {
+        button.classList.toggle("active", button === selected);
+        button.setAttribute("aria-pressed", String(button === selected));
+      });
+      document.querySelectorAll<HTMLElement>("#grid > .card").forEach(card => {
+        const category = card.querySelector(".cat")?.textContent?.toLowerCase() ?? "";
+        const status = card.querySelector(".status")?.textContent?.toLowerCase() ?? "";
+        let matches = value.startsWith("All") || category.includes(value.toLowerCase());
+        if (/^\d+ Live$/.test(value)) matches = status.includes("live");
+        if (/^\d+ In dev$/.test(value)) matches = status.includes("development");
+        if (/^\d+ Extension$/.test(value)) matches = status.includes("extension");
+        card.hidden = !matches;
+      });
+    };
+    pills?.addEventListener("click", filter);
     const scrollingAreas = Array.from(document.querySelectorAll<HTMLElement>("[data-site-import-scroll-root]"));
     const scrollTop = () =>
       scrollingAreas.find(
@@ -452,6 +493,7 @@ function useImportedLayout() {
     window.addEventListener("resize", resizeSummaries);
     document.addEventListener("scroll", handleScroll, { passive: true, capture: true });
     return () => {
+      pills?.removeEventListener("click", filter);
       cancelAnimationFrame(parallaxFrame);
       syncScrollHeaders(true);
       document.removeEventListener("load", handleScroll, true);

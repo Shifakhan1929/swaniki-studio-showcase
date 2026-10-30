@@ -890,3 +890,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-
 }
 
 
+
+/* Frontend-only import repairs. */
+.nav-drawer.is-open { opacity: 1; pointer-events: auto; transform: none; }
+.nav.collapsed:hover .nav-flyout, .nav.collapsed:focus-within .nav-flyout { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+.footer-wordmark { background-image: var(--g); background-clip: text; -webkit-text-fill-color: transparent; font-family: var(--display); }
+#grid > .card[hidden] { display: none; }
+#filterPills .pill.active { background: var(--ink) !important; color: var(--paper-2) !important; }
+.project-kind { width: 100%; color: var(--ink); background: var(--paper-2); font: 500 15px var(--sans); }
