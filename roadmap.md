@@ -6,5 +6,7 @@
 Documented homepage limitations: two media stills, omitted title scramble, process cards in normal flow.
 
 # Additional frontend pages
-- [ ] Import Swaniki Labs, Technology, About, and Start a Project pages.
-- [ ] Verify navigation and frontend presentation without backend functionality.
+- [x] Import Swaniki Labs, Technology, About, and Start a Project pages.
+- [x] Verify navigation and frontend presentation without backend functionality.
+
+Additional-page limitations: individual product pages, case studies, and Careers remain unimported; project form sends nothing.
