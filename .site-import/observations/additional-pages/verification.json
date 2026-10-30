@@ -1,0 +1,54 @@
+[
+  {
+    "navigation": "labs",
+    "url": "http://localhost:8080/labs.html",
+    "h1": "Where a challenge becomes a product."
+  },
+  {
+    "navigation": "technologies",
+    "url": "http://localhost:8080/technologies.html",
+    "h1": "Websites we\u2019ve designed, built & shipped."
+  },
+  {
+    "navigation": "about",
+    "url": "http://localhost:8080/about.html#about",
+    "h1": "A small senior team behind every build."
+  },
+  {
+    "navigation": "contact",
+    "url": "http://localhost:8080/contact.html",
+    "h1": "Got a problem? Let's build the solution."
+  },
+  {
+    "filter": "labs",
+    "visible": [
+      "FounderSignal",
+      "Lead Intelligence"
+    ]
+  },
+  {
+    "filter": "technologies",
+    "visible": [
+      "Yash Honda"
+    ]
+  },
+  {
+    "contact": "editable, no submission or navigation"
+  },
+  {
+    "phone_menu": "labs",
+    "result": "opens and closes"
+  },
+  {
+    "phone_menu": "technologies",
+    "result": "opens and closes"
+  },
+  {
+    "phone_menu": "about",
+    "result": "opens and closes"
+  },
+  {
+    "phone_menu": "contact",
+    "result": "opens and closes"
+  }
+]
