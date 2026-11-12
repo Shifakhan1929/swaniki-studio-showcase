@@ -1,24 +1,30 @@
 # Swaniki Studio Showcase
 
-Imported website: https://swaniki.com/
+A modern website for Swaniki, a digital product studio focused on building SaaS products, websites, custom automations, and AI-powered solutions.
 
-This project was built with [Lovable](https://lovable.dev).
+The website presents the studio's identity, products, client projects, services, technology stack, team, and development approach.
 
-## Build with Lovable
+## ✨ Key Sections
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/0ee963b0-68e9-4b3b-ab4a-714f295005bb).
+- **Hero:** Introduction to Swaniki and its core vision.
+- **Statistics:** Overview of products, websites, and capabilities.
+- **Technology Stack:** Technologies used across projects.
+- **Swaniki Labs:** Showcase of digital products.
+- **Swaniki Technologies:** Collection of client websites.
+- **Inside Swaniki:** Team introduction.
+- **How We Work:** Four-stage development process.
+- **Services:** SaaS, web development, automation, and social media management.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+## 🎯 Project Goals
 
-## Development
+- Establish a professional digital presence for Swaniki.
+- Showcase products and client work.
+- Communicate the studio's services and capabilities.
+- Create a clear journey for potential clients.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## 🔗 Live Website
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+[Visit Swaniki Studio](https://swaniki-studio-showcase.vercel.app/)
+
+---
+*Designed to bring ideas, products, and digital experiences together.*
